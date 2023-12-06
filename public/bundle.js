@@ -20,13 +20,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/config/config.js":
+/*!******************************!*\
+  !*** ./src/config/config.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   CnapxApplication: () => (/* binding */ CnapxApplication)\n/* harmony export */ });\n/* harmony import */ var _utils_toast_it_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/toast_it.js */ \"./src/utils/toast_it.js\");\n\r\n\r\n/**\r\n * 01/11/2023 - 08:48AM\r\n * THIS CLASS REPRESENTS THE APPLICATION, \r\n * It is the class that represent the only standard entrance to this app. It will use also the help of other more specialized classed to acomplish it taske though.\r\n */\r\n\r\nclass CnapxApplication\r\n{\r\n    #_mErrors;\r\n    #mErrorMsg;\r\n    constructor()\r\n    {\r\n        this.#_mErrors = 0;\r\n        this.#mErrorMsg = '';\r\n    }\r\n\r\n\r\n\r\n\r\n    /// The Publis API for Admin\r\n    displayAppAdmin()\r\n    {\r\n        /**\r\n         * This function will load the admin-login-interface so that the admin can login\r\n         */\r\n\r\n        __webpack_require__.e(/*! import() */ \"src_admin_admin_login_ui_js\").then(__webpack_require__.bind(__webpack_require__, /*! ../admin/admin_login_ui.js */ \"./src/admin/admin_login_ui.js\"))\r\n        .then(m => {\r\n            \r\n            let adminLoginForm = new m.AdminLoginUi();\r\n            adminLoginForm.createUi();\r\n\r\n        })\r\n        .catch(error => {\r\n            console.log(error.message);\r\n            (0,_utils_toast_it_js__WEBPACK_IMPORTED_MODULE_0__.toastIt)('red', 'Error! please try again!');\r\n        })\r\n        \r\n\r\n    }\r\n\r\n    // =======================\r\n\r\n\r\n\r\n\r\n\r\n    // The Publis API for Customer/client\r\n    displayApp()\r\n    {\r\n        if(this.#_mErrors == 0)\r\n        {\r\n            /**\r\n             * Here three of the most high level classes will be activated to render the application. These classes are \r\n             * 1. The headerSection class\r\n             * 2. The mainSection class\r\n             * 3. The footerSection class\r\n             */\r\n            Promise.all(/*! import() */[__webpack_require__.e(\"src_header_app_header_js\"), __webpack_require__.e(\"src_utils_insert_into_DOM_js-src_utils_remove_side_nav_js-src_utils_small_spinner_js\")]).then(__webpack_require__.bind(__webpack_require__, /*! ../header/app_header.js */ \"./src/header/app_header.js\"))\r\n            .then(m => {\r\n                let header = new m.AppHeader();\r\n                header.createUi();\r\n            })\r\n            .catch(error => {\r\n                console.log(error.message);\r\n                (0,_utils_toast_it_js__WEBPACK_IMPORTED_MODULE_0__.toastIt)('red', 'Unable to load menu');\r\n            });\r\n            \r\n\r\n\r\n            //Import and display main content\r\n            // ----------------------------------\r\n            __webpack_require__.e(/*! import() */ \"src_main_main_content_js-_43621\").then(__webpack_require__.bind(__webpack_require__, /*! ../main/main_content.js */ \"./src/main/main_content.js\"))\r\n            .then(m => {\r\n                let maincontent = new m.MainContent();\r\n                maincontent.createUi();\r\n            })\r\n            .catch(error => {\r\n                console.log(error.message);\r\n                (0,_utils_toast_it_js__WEBPACK_IMPORTED_MODULE_0__.toastIt)('red', 'Unable to load main content');\r\n            });\r\n\r\n\r\n\r\n            //Import and display the main-content sub-section\r\n            // -------------------------------------------------\r\n            __webpack_require__.e(/*! import() */ \"src_main_main_sub_section_js\").then(__webpack_require__.bind(__webpack_require__, /*! ../main/main_sub_section.js */ \"./src/main/main_sub_section.js\"))\r\n            .then(m => {\r\n                let subsection = new m.MainSubSection();\r\n                subsection.createUi();\r\n            })\r\n            .catch(error => {\r\n                console.log(error.message);\r\n                (0,_utils_toast_it_js__WEBPACK_IMPORTED_MODULE_0__.toastIt)('red', 'Unable to load subsection');\r\n            });\r\n\r\n\r\n\r\n            //Import and display the Application footer \r\n            __webpack_require__.e(/*! import() */ \"src_footer_footer_js\").then(__webpack_require__.bind(__webpack_require__, /*! ../footer/footer.js */ \"./src/footer/footer.js\"))\r\n            .then(m => {\r\n                let footer = new m.Footer();\r\n                footer.createUi();\r\n            })\r\n            .catch(error => {\r\n                console.log(error.message);\r\n                (0,_utils_toast_it_js__WEBPACK_IMPORTED_MODULE_0__.toastIt)('red', 'Unable to load footer');\r\n            });\r\n\r\n\r\n            //Import and activate the modal\r\n            __webpack_require__.e(/*! import() */ \"src_modal_modal_structure_js-_ebc20\").then(__webpack_require__.bind(__webpack_require__, /*! ../modal/modal_structure.js */ \"./src/modal/modal_structure.js\"))\r\n            .then(m => {\r\n                let modalstructure = new m.ModalStructure();\r\n                modalstructure.createUi();\r\n            })\r\n\r\n        }\r\n        else \r\n        {\r\n            (0,_utils_toast_it_js__WEBPACK_IMPORTED_MODULE_0__.toastIt)('red', this.#mErrorMsg);\r\n            console.log(this.#mErrorMsg);\r\n            \r\n        }\r\n    }\r\n    // ================\r\n}\r\n\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/config/config.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/esm/index.esm.js\");\n\r\n\r\n\r\nconst firebaseConfig = {\r\n    apiKey: \"AIzaSyCrfKDEJg8Y9Xn4B2yAWdbuMoQUvP_qk5U\",\r\n    authDomain: \"cnapx-5a1c0.firebaseapp.com\",\r\n    projectId: \"cnapx-5a1c0\",\r\n    storageBucket: \"cnapx-5a1c0.appspot.com\",\r\n    messagingSenderId: \"358469353004\",\r\n    appId: \"1:358469353004:web:33b7cfc71ce29c09d89b89\"\r\n  };\r\n(0,firebase_app__WEBPACK_IMPORTED_MODULE_0__.initializeApp)(firebaseConfig);\r\n\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _config_config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./config/config.js */ \"./src/config/config.js\");\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/esm/index.esm.js\");\n\r\n\r\n\r\nconst firebaseConfig = {\r\n    apiKey: \"AIzaSyCrfKDEJg8Y9Xn4B2yAWdbuMoQUvP_qk5U\",\r\n    authDomain: \"cnapx-5a1c0.firebaseapp.com\",\r\n    projectId: \"cnapx-5a1c0\",\r\n    storageBucket: \"cnapx-5a1c0.appspot.com\",\r\n    messagingSenderId: \"358469353004\",\r\n    appId: \"1:358469353004:web:33b7cfc71ce29c09d89b89\"\r\n  };\r\n(0,firebase_app__WEBPACK_IMPORTED_MODULE_1__.initializeApp)(firebaseConfig);\r\n\r\n\r\n\r\nlet urlobject = new URL(window.location.href);\r\nlet path = urlobject.pathname;\r\n\r\nif(path.indexOf('admin') > -1)\r\n{\r\n  const cnapx = new _config_config_js__WEBPACK_IMPORTED_MODULE_0__.CnapxApplication();\r\n  cnapx.displayAppAdmin();  \r\n}\r\nelse \r\n{\r\n  const cnapx = new _config_config_js__WEBPACK_IMPORTED_MODULE_0__.CnapxApplication();\r\n  cnapx.displayApp();\r\n}\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/utils/toast_it.js":
+/*!*******************************!*\
+  !*** ./src/utils/toast_it.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   toastIt: () => (/* binding */ toastIt)\n/* harmony export */ });\nfunction toastIt(color, msg)\r\n{\r\n    M.Toast.dismissAll();\r\n    M.toast({html: msg, classes: color});\r\n}\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/utils/toast_it.js?");
 
 /***/ }),
 
@@ -116,6 +136,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
@@ -126,6 +149,28 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".bundle.js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -146,6 +191,52 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		var dataWebpackPrefix = "cnapx-trials:";
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
+/******/ 		
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -155,6 +246,119 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						}
+/******/ 					}
+/******/ 				}
+/******/ 		};
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 		
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkcnapx_trials"] = self["webpackChunkcnapx_trials"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
 /******/ 	
 /************************************************************************/
