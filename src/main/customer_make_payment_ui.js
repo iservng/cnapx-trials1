@@ -223,7 +223,7 @@ class CustomerMakePaymentUi
                 document.querySelector('#customerMakePaymentForm').addEventListener('submit', e => {
                     e.preventDefault();
                     //Call the check customer payment form checker class
-                    // console.log(e.target);
+                    // console.log(e.target);..
                     import('./check_customer_make_payment_form.js')
                     .then(m => {
                         let checker = new m.CheckCustomerMakePay(e.target);

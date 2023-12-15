@@ -147,7 +147,7 @@ class CheckCustomerMakePay
                     </div>
                     <div class="card-action center-align">
 
-                        <a href="#" class="btn-small green white-text">
+                        <a href="#" class="btn-small green white-text" id="viewPaymentDetails">
                             view details
                         </a>
                         
@@ -157,7 +157,31 @@ class CheckCustomerMakePay
         </div>
         `;
         insertIntoDOM('#secondBox', content);
+
+        /**
+         * Register Event handler for the view payment details button
+         */
+        if(document.querySelector('#viewPaymentDetails'))
+        {
+            document.querySelector('#viewPaymentDetails').addEventListener('click', e => {
+                e.preventDefault();
+                console.log("Ok");
+            })
+        }
     }
+
+
+
+
+
+
+
+
+    /******************************************
+     * Class utility for UI manipulation
+     * *****************************************
+     */
+    
 
     #hideFirstAndThirdBox()
     {

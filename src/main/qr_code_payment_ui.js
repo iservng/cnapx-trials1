@@ -77,22 +77,8 @@ class QRCodePaymentUi
 
             this.#loadPageComponents();
             this.#registerCancelEventHandler();
+            //
 
-
-
-
-
-
-            /**
-             * Register an event handler for the show ShowQRCode button above
-             */
-            if(document.querySelector('#ShowQRCode'))
-            {
-                document.querySelector('#ShowQRCode').addEventListener('click', e => {
-                    e.preventDefault();
-                    this.#showQRCode();
-                });
-            }
 
 
         }
@@ -126,7 +112,7 @@ class QRCodePaymentUi
 
                         <span class="card-title">
                             <strong class="purple-text" id="cardTitle">
-                                Wait!
+                                Generating code!
                             </strong>
                         </span>
                         <p style="margin-top: 2rem;" id="qrcodeImgContainer">
@@ -158,13 +144,14 @@ class QRCodePaymentUi
             <br>
             <small class="purple-text"><i>Generating... please wait</i>!</small>
             `;
-            let dataForQR = "2click@cnapxpay";
+            let dataForQR = "2click@cnapxpaytt";
             this.#serverGeneratQRCode(dataForQR);
+            
         }
         
 
         //Call the page title to specify what is happening
-        this.#hidePageTitle();
+        // this.#hidePageTitle();
         this.#registerCancelEventHandler();
     }
     #serverGeneratQRCode(data)
@@ -175,16 +162,41 @@ class QRCodePaymentUi
 
         let qrImg = document.createElement('img');
         qrImg.src = imgURL;
+        
         qrImg.addEventListener('load', () => {
 
-            // generatorDiv.classList.add('active');
-            // generateBtn.innerText = 'Generate QR code';
-            document.querySelector('strong#cardTitle').innerHTML = 'Pay';
-            document.querySelector('#qrcodeImgContainer').innerHTML = qrImg;
+            document.querySelector('strong#cardTitle').innerHTML = 'Pay Now';
+            let qrcodeImgContainer = document.querySelector('#qrcodeImgContainer');
+            qrcodeImgContainer.innerHTML = ``;
+            qrcodeImgContainer.append(qrImg);
             
 
         });
         // -------------------------
+        // SET TIME OUT FOR A DEFAULT QR-IMAGE 
+        // -------------------------------------
+
+        
+        setTimeout(this.#checkTitleChanges, 3000);
+       
+
+    }
+    #checkTitleChanges()
+    {
+        // console.log("Title change checker ok");
+        let title = document.querySelector('strong#cardTitle').innerHTML.trim();
+        if(title === 'Generating code!')
+        {
+            toastIt('blue', "Scan code to pay!");
+            let qrImg = document.createElement('img');
+            qrImg.src = "./images/qr.png";
+
+            document.querySelector('strong#cardTitle').innerHTML = 'Pay Now';
+            let qrcodeImgContainer = document.querySelector('#qrcodeImgContainer');
+            qrcodeImgContainer.innerHTML = ``;
+            qrcodeImgContainer.append(qrImg);
+        }
+
     }
 
 
@@ -274,6 +286,17 @@ class QRCodePaymentUi
             </div>
         `;
         insertIntoDOM('#boxTwo', content);
+
+        /**
+             * Register an event handler for the show ShowQRCode button above
+             */
+        if(document.querySelector('#ShowQRCode'))
+        {
+            document.querySelector('#ShowQRCode').addEventListener('click', e => {
+                e.preventDefault();
+                this.#showQRCode();
+            });
+        }
     }
     #hideBoxTwo()
     {
@@ -315,24 +338,30 @@ class QRCodePaymentUi
     }
     #showScannerUi()
     {
-        console.log("Scanner UI.");
+    
         this.#hideBoxOne();
         this.#hideBoxThree();
-        this.#hidePageTitle();
+        // this.#hidePageTitle();
+
         let content = `
         <div class="row">
             <div class="col s12">
                 <div class="card z-depth-0">
-                    <div class="card-content purple-text center-align">
+                    <div class="card-content purple-text center-align" style="overflow: hidden;">
                         <span class="card-title">
-                            <strong>Getting Scanner</strong>
+                            <strong id="scannerTitle">Getting Scanner</strong>
                         </span>
-                        <p style="margin-top: 2rem;" id="scannerContainer">
+                        
+                        <p style="margin-top: 2rem; overflow: hidden;" id="scannerContainer">
                             <progress></progress>
                         </p>
+                        <div class="video-container">
+                            <video class="responsive-video"></video>
+                        </div>
+                        
                     </div>
                     <div class="card-action">
-                        <a href="#" class="cancel">Cancel</a>
+                        <a href="#" class="btn-small red stopCam">Stop</a>
                     </div>
                 </div>
             </div>
@@ -340,8 +369,83 @@ class QRCodePaymentUi
         `;
         insertIntoDOM('#boxTwo', content);
 
+        //Call the user-device camera to start scan
+        let video = document.querySelector('video');
+        // let textarea = document.querySelector('textarea');
+
+        this.#startUserCameraScan(video);
+
+
         //Register Event-Handler for the cancel btn, which actualy takes a user back to the payment-profile-dashboard
         this.#registerCancelEventHandler();
+
+    }
+    
+    #startUserCameraScan(video)
+    {
+        
+        // Scan QR Code using Device Camera
+        let scanner;
+        scanner = new Instascan.Scanner({video: video});
+
+            Instascan.Camera.getCameras()
+            .then(cameras => {
+
+                if(cameras.length > 0)
+                {
+                    scanner.start(cameras[0])
+                    .then(() => {
+                        // form.classList.add('active-video');
+                        // stopCam.style.display = "inline-block";
+                    })
+                }
+                else 
+                {
+                    console.log("No Camera Found!");
+                    toastIt('red', 'No Camera found');
+                }
+
+            })
+            .catch(error => {
+                console.log(error.massage);
+            });
+
+            
+            scanner.addListener('scan', c => {
+
+                document.querySelector('#scannerContainer').innerHTML = ``;
+                document.querySelector('#scannerTitle').innerHTML = `<span class="green-text">&#10003;<br>Done!</span>`;
+                console.log(c);
+                /**
+                 * a====================
+                 * After the secret-text has been decoded by the scanner, it is now we call 
+                 * 1. The interface to hide the scanner-ui, 
+                 * 2. Proceed with what is next in line of processing.
+                 */
+                // ================================
+            });
+        // -----------------------------
+        
+        //Register event handler for
+        if(document.querySelector('.stopCam')) 
+        {
+            document.querySelector('.stopCam').addEventListener('click', e => {
+                e.preventDefault();
+                this.#stopCam(scanner);
+            });
+        }
+
+    }
+    #stopCam(scanner)
+    {
+        
+        if(scanner) scanner.stop();
+
+        //After the scan is stopped rebuils the ui
+        this.#showBoxOne();
+        this.#showBoxTwo();
+        this.#showBoxThree();
+
 
     }
     #hideBoxThree()
