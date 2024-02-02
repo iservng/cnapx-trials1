@@ -158,7 +158,9 @@ class CheckCustomerMakePay
         `;
         insertIntoDOM('#secondBox', content);
 
-        /**
+
+        
+        /********************************************************
          * Register Event handler for the view payment details button
          */
         if(document.querySelector('#viewPaymentDetails'))

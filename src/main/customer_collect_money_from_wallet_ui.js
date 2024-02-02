@@ -36,13 +36,12 @@ class CustomerCollectMoneyFromWallet
                             </b>
                         </p>
                     </div>
-
-
-
                     
 
 
-                    <!-- FIRST SECTION OF DASHBOARD  -->
+                    <!-- 
+                    FIRST SECTION OF DASHBOARD 
+                     -->
                     <div class="col s12" style="margin-bottom: 2rem; margin-top: 3rem;" id="mainContentSection">
                         <div class="row">
 

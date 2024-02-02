@@ -191,7 +191,7 @@ class AppHeader
 
                                 <li>
                                     <a class="waves-effect waves-light ${this.#linksFontsColor} modal-trigger" href="#modal1">
-                                        Signup
+                                        Register
                                     </a>
                                 </li>
 
@@ -201,7 +201,7 @@ class AppHeader
                                 
                                 <li>
                                     <a class="purple white-text waves-effect waves-light btn sign-in" href="#">
-                                        Sign In
+                                        Login
                                     </a>
                                 </li>
                             </ul>

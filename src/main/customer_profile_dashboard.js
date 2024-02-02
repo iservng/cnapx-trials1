@@ -4,6 +4,7 @@ import { toastIt } from "../utils/toast_it.js";
 import { removeSidenav } from "../utils/remove_side_nav.js";
 import { removeModal } from "../utils/remove_modal.js";
 import { removeLandingPageSections } from '../utils/remove_landing_page_sections.js';
+// import { doc } from "firebase/firestore";
 
 class CustomerProfileDashboard
 {
@@ -84,11 +85,10 @@ class CustomerProfileDashboard
                     <!-- FIRST SECTION OF DASHBOARD  -->
                     <div class="col s12" style="margin-bottom: 2rem; margin-top: 3rem;">
                         <div class="row">
-                            <div class="col s12" style="margin-bottom: 3rem; border-bottom: 1px solid #f3e5f5; padding-bottom: 2rem;">
+                            <div class="col s12 center-align" style="margin-bottom: 3rem; border-bottom: 1px solid #f3e5f5; padding-bottom: 2rem;">
 
                                 <a href="#">
                                     <img src="./images/bell.png" alt="">
-                                    
                                 </a>
                                 <a href="#" class="btn-flat">
                                     <b class="green-text text-darken-3">
@@ -97,8 +97,14 @@ class CustomerProfileDashboard
                                 </a>
 
                                 <a href="#" class="btn-flat">
-                                    <b class="purple-text text-darken-3">
-                                        check Balance
+                                    <b class="purple-text text-darken-3 checkBalance">
+                                        Records
+                                    </b>
+                                </a>
+
+                                <a href="#" class="btn-flat">
+                                    <b class="purple-text text-darken-3 bookKeeping">
+                                        Shop
                                     </b>
                                 </a>
                                 
@@ -120,7 +126,6 @@ class CustomerProfileDashboard
                                         Scan
                                     </a>
                                 </p>
-                                
                             </div>
 
                             <div class="col s4 center-align">
@@ -239,12 +244,34 @@ class CustomerProfileDashboard
             /************************************
              *  Logout Button Event Implementation
              */
+
+            if(document.querySelector('.checkBalance'))
+            {
+                document.querySelector('.checkBalance').addEventListener('click', e => {
+                    e.preventDefault();
+                    // console.log("ok Fanta.");
+                    import('./customer_check_bank_balance.js')
+                    .then(m => {
+                        let foo = new m.CustomerCheckBankBalance();
+                        foo.createUi();
+                    })
+                    // this.#
+                })
+
+            }
+
+
+
+
+
             if(document.querySelectorAll('.logout'))
             {
                 let logoutButtons = document.querySelectorAll('.logout');
                 logoutButtons.forEach(logoutBtn => {
                     logoutBtn.addEventListener('click', e => {
                         e.preventDefault();
+
+                        
                         //Dynamically import and Execute the logout class
                         // ---- 
                         import('../utils/logout_class.js')
@@ -257,6 +284,8 @@ class CustomerProfileDashboard
                             toastIt('red', 'Unexpected network issue, try again!');
                         });
                         // -----------------
+
+
                     });
                 });
             }
@@ -326,6 +355,34 @@ class CustomerProfileDashboard
                         walletCollect.createUi();
                     })
                     // -------------------
+                });
+            }
+            // ====================
+
+            /**
+             * BOOK KEEPING TRIGER CODE
+             */
+            if(document.querySelectorAll('.bookKeeping'))
+            {
+                let bookKeepingBtns = document.querySelectorAll('.bookKeeping');
+                bookKeepingBtns.forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        e.preventDefault();
+                        console.log(e.target);
+                        /**
+                         * Dynamically import and execute the shopping-cart class
+                         */
+                        import('../shoppingCart/shopping_cart_home_page.js')
+                        .then(m => {
+                            let shoppingCart = new m.ShoppingCartHomePage();
+                            shoppingCart.createUi();
+
+                        })
+                        .catch(error => {
+                            console.log(error.message);
+                            toastIt('red', "Unable to load Shopping Cart!");
+                        });
+                    });
                 });
             }
             // ====================

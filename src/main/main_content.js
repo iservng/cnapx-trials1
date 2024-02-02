@@ -1,6 +1,6 @@
 import { insertIntoDOM } from "../utils/insert_into_DOM.js";
 import { toastIt } from "../utils/toast_it.js";
-
+// import { OfflineDB } from "../indexeddb/offlinedb.js";
 
 class MainContent 
 {
@@ -88,12 +88,34 @@ class MainContent
                 </ul>
             </div>
             `;
+
             insertIntoDOM('main', content);
             var slider = document.querySelectorAll('.slider');
             M.Slider.init(slider, {
                 indicators: false,
                 height: 600
             });
+
+
+            //Using the sniffing method check if the user-agent support offline functionality then Dynamically call the offline setup class and execute it
+
+            if(window.indexedDB)
+            {
+                import("../indexeddb/offlinedb.js")
+                .then(m => {
+                    let offlinedb = new m.OfflineDB();
+                    offlinedb.withDB(() => console.log("Offline DB set completed"));
+                })
+                .catch(error => {
+                    console.log(error.message);
+                });
+                // console.log("IndexedDB is found");
+            }
+            else 
+            {
+                toastIt('red', 'Your browser need to be updated!');
+            }
+            
 
         }
         else 

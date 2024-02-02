@@ -2,6 +2,7 @@ import { toastIt } from "../utils/toast_it.js";
 import { insertIntoDOM } from '../utils/insert_into_DOM.js';
 
 import { APP_NAME, DEFAILT_MENU } from '../config/app_constants.js';
+import { removeSidenav } from "../utils/remove_side_nav.js";
 /**
  * This class is responsible to taking information, then display the header part of this application using the specified information. This information in question is usually 
  * 1. The logo name of the Application
@@ -93,6 +94,62 @@ class UserProfileMenu
                         
                     </div>
                 </li>
+
+                <div class="divider"></div>
+                <li>
+                    <a class="cart-ui" href="#">
+                        <b class="black-text cartAmount">0</b>
+                        <img class="responsive-img" src="./images/cart-images/cart2.png">
+                    </a>
+                </li>
+
+                <div class="divider"></div>
+                
+                <!--DROP-DOWN-->
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header purple-text text-darken-2">
+                            <b>Manage Shop</b>
+                        </a>
+                        <div class="collapsible-body">
+                        <ul>
+                        
+                            <li>
+                                <a href="#!" class="add_product">
+                                    Add Product
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="records">
+                                    Records
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="transactions">
+                                    Transactions
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="record_money_in">
+                                    Record Money-in
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="record_money_out">
+                                    Record Money-out
+                                </a>
+                            </li>
+
+                        </ul>
+                        </div>
+                    </li>
+                    </ul>
+                </li>
+                <!--DROP-DOWN-->
+
+
+                
                 <div class="divider"></div>
                 <li>
                     
@@ -116,6 +173,7 @@ class UserProfileMenu
                     </a>
                 </li>
                 <div class="divider"></div>
+                
                 <li>
                    
                     <a href="#" class="purple-text text-darken-2 logout">
@@ -168,11 +226,7 @@ class UserProfileMenu
 
                             <!--The Main-menu starts here -->
                             <ul class="right hide-on-med-and-down">
-                                <li>
-                                    <a href="sass.html" class="${this.#linksFontsColor}">
-                                        FAQ
-                                    </a>
-                                </li>
+                                
                                 
                                 <!-- Dropdown Trigger -->
                                 <!-- class="waves-effect waves-light btn modal-trigger" href="#modal1" -->
@@ -181,11 +235,20 @@ class UserProfileMenu
                                         ${customerName}
                                     </a>
                                 </li>
+
                                 <li>
                                     <a class="purple darken-3 white-text waves-effect waves-light btn-small logout" href="#">
-                                        Sign Out
+                                        Logout
                                     </a>
                                 </li>
+
+                                <li>
+                                    <a class="cart-ui" href="#">
+                                        <b class="black-text cartAmount">0</b>
+                                        <img class="responsive-img" src="./images/cart-images/cart2.png">
+                                    </a>
+                                </li>
+                                
                             </ul>
                             <!--The Main-menu stops here -->
                         </div>
@@ -204,6 +267,72 @@ class UserProfileMenu
             M.Sidenav.init(sidenav);
             var dropdown = document.querySelectorAll('.dropdown-trigger');
             M.Dropdown.init(dropdown);
+
+            var collapsible = document.querySelectorAll('.collapsible');
+            M.Collapsible.init(collapsible);
+              
+
+
+
+
+            //Open Cart
+            if(document.querySelectorAll('.cart-ui'))
+            {
+                let cartOpenBtns = document.querySelectorAll('.cart-ui');
+                cartOpenBtns.forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        e.preventDefault();
+                        // console.log("Open cart ok");
+                        //Dynamically import and execute the cartUI class
+                        import('../shoppingCart/cart_ui.js')
+                        .then(m => {
+
+                            let cartUI = new m.CartUI();
+                            cartUI.createUi();
+
+                        })
+                        .catch(error => {
+                            console.log(error.message);
+                            toastIt('red', 'Unable to load Cart UI');
+                        });
+
+                    });
+                });
+            }
+
+
+
+
+
+
+            /**
+             * The event handler for a"add_product"
+             * --------------------------------------
+             */
+            if(document.querySelectorAll('.add_product'))
+            {
+                let addProductBtns = document.querySelectorAll('.add_product');
+                addProductBtns.forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        e.preventDefault();
+                        
+                        // Dynamically load and execute the class responsible for showing the ui used for collecting product information and processing it
+                        import('../shop/add_product_ui.js')
+                        .then(m => {
+                            
+                            let addProductUi = new m.AddProductUi();
+                            addProductUi.createUi();
+                            removeSidenav();
+
+                        })
+                        .catch(error => {
+                            console.log(error.message);
+                            toastIt('red', 'Unable to load the add-product UI');
+                        });
+
+                    });
+                });
+            }
 
 
             /******************************************************
