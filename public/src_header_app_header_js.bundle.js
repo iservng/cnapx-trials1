@@ -15,7 +15,7 @@
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   APP_NAME: () => (/* binding */ APP_NAME),\n/* harmony export */   DEFAILT_MENU: () => (/* binding */ DEFAILT_MENU)\n/* harmony export */ });\n\r\nconst APP_NAME = 'cnapx';\r\nconst DEFAILT_MENU = [\r\n    `About`,\r\n    `Services`,\r\n    `Signup`,\r\n    `Signin`\r\n];\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/config/app_constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   APP_NAME: () => (/* binding */ APP_NAME),\n/* harmony export */   COMPANY: () => (/* binding */ COMPANY),\n/* harmony export */   DEFAILT_MENU: () => (/* binding */ DEFAILT_MENU)\n/* harmony export */ });\n\r\nconst APP_NAME = 'cnapx';\r\nconst COMPANY = 'iservng';\r\nconst DEFAILT_MENU = [\r\n    `About`,\r\n    `Services`,\r\n    `Signup`,\r\n    `Signin`\r\n];\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/config/app_constants.js?");
 
 /***/ }),
 

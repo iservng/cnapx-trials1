@@ -15,7 +15,7 @@
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   removeLandingPageSections: () => (/* binding */ removeLandingPageSections)\n/* harmony export */ });\n\r\nconst removeLandingPageSections = () => {\r\n    let sections = document.querySelectorAll('.landing-page');\r\n        sections.forEach(section => {\r\n            section.style.display = 'none';\r\n        });\r\n};\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/utils/remove_landing_page_sections.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   removeLandingPageSections: () => (/* binding */ removeLandingPageSections)\n/* harmony export */ });\n\r\nconst removeLandingPageSections = () => {\r\n    if(document.querySelectorAll('.landing-page'))\r\n    {\r\n        let sections = document.querySelectorAll('.landing-page');\r\n        sections.forEach(section => {\r\n            section.style.display = 'none';\r\n        });\r\n\r\n    }\r\n    \r\n};\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/utils/remove_landing_page_sections.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   removeModal: () => (/* binding */ removeModal)\n/* harmony export */ });\n\r\nconst removeModal = () => {\r\n    let modals = document.querySelectorAll('.modal');\r\n    modals.forEach(instance => {\r\n        let inst = M.Modal.getInstance(instance);\r\n        inst.close();\r\n    });\r\n};\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/utils/remove_modal.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   removeModal: () => (/* binding */ removeModal)\n/* harmony export */ });\n\r\nconst removeModal = () => {\r\n    if(document.querySelectorAll('.modal'))\r\n    {\r\n        let modals = document.querySelectorAll('.modal');\r\n        modals.forEach(instance => {\r\n            let inst = M.Modal.getInstance(instance);\r\n            inst.close();\r\n        });\r\n    }\r\n    \r\n};\r\n\n\n//# sourceURL=webpack://cnapx-trials/./src/utils/remove_modal.js?");
 
 /***/ })
 

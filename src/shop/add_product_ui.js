@@ -3,9 +3,6 @@
 
 import { insertIntoDOM } from "../utils/insert_into_DOM.js";
 import { toastIt } from "../utils/toast_it.js";
-import { removeSidenav } from "../utils/remove_side_nav.js";
-import { removeModal } from "../utils/remove_modal.js";
-import { removeLandingPageSections } from '../utils/remove_landing_page_sections.js';
 
 
 class AddProductUi
@@ -30,25 +27,6 @@ class AddProductUi
         //Organize the content of the profile to be displayed, on the condition that this class has not found any errors while its processing
         if(this.#_mErrors == 0)
         {
-            // Remove Modal
-            // removeModal();
-            // Remove Side Navigation
-            // removeSidenav();
-            // Remove landing page sections
-            // removeLandingPageSections();
-            // Call user profile menu.
-            
-            // import('../header/user_profile_menu.js')
-            // .then(m => {
-            //     let usermenu = new m.UserProfileMenu();
-            //     usermenu.createUi();
-            // })
-            // .catch(error => {
-            //     console.log(error.message);
-            //     toastIt('red', 'Error loading Menu!');
-            // });
-
-
             let customerName = `Default Name`;
             // sessionStorage.
             if(sessionStorage.getItem('btnAction'))
@@ -86,6 +64,7 @@ class AddProductUi
                     <div class="col s12" style="margin-bottom: 2rem; margin-top: 3rem;">
                         
                         <div class="row">
+                            <div id="imgContainer"></div>
                             <form class="col s12" id="add_product_form">
 
                                 <div class="file-field input-field">
@@ -196,6 +175,15 @@ class AddProductUi
                 document.querySelector('#add_product_form').addEventListener('submit', e => {
                     e.preventDefault();
                     //Dynamically load the code that handler the processing of the form and pass the form object to it.
+                    import('./process_add_product_form.js')
+                    .then(m => {
+                        let processor = new m.ProcessAddProductForm(e.target);
+                        processor.processFormContent();
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                        toastIt('red', 'Unable to load the process form class');
+                    });
 
                 });
             }

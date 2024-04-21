@@ -168,7 +168,7 @@ class CustomerCollectMoneyFromWallet
             {
                     document.querySelector('.backToDashboard').addEventListener('click', e => {
                     e.preventDefault();
-                    import('./customer_profile_dashboard.js')
+                    import('./marchant_customer_profile_dashboard.js')
                     .then(m => {
                         let dashboard = new m.CustomerProfileDashboard();
                         dashboard.createUi();
@@ -399,7 +399,7 @@ class CustomerCollectMoneyFromWallet
             document.querySelector("#dashboardBackBtn").addEventListener('click', e => {
                 
                 e.preventDefault();
-                import('./customer_profile_dashboard.js')
+                import('./marchant_customer_profile_dashboard.js')
                 .then(m => {
                     let dashboad = new m.CustomerProfileDashboard();
                     dashboad.createUi();

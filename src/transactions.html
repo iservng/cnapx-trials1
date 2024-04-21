@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cnapx Transaction</title>
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <link rel="stylesheet" href="./css/sticky_footer.css">
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <header>
+
+        <!-- SideNav Structure -->
+        <ul id="mobile-demo" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <!-- <img src="images/office.jpg"> -->
+                    </div>
+                    <a href="#user">
+                        <img class="circle" src="images/defaultpix.png">
+                    </a>
+                    <a href="#name">
+                        <span class="blue-text text-darken-3 name">
+                            <b>John Doe</b>
+                        </span>
+                    </a>
+                    <a href="#email">
+                        <span class="blue-text text-darken-3 email">
+                            <b>jdandturk@gmail.com</b>
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="#!">
+                    <!-- <i class="material-icons">cloud</i> -->
+                    First Link With Icon
+                </a>
+            </li>
+            <li>
+                <a href="#!">Second Link</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a class="subheader">Subheader</a>
+            </li>
+            <li>
+                <a class="waves-effect" href="#!">Third Link With Waves</a>
+            </li>
+            <li>
+                <a class="dropdown-trigger" href="#!" data-target="dropdown2">
+                    Text dropdown
+                </a>
+            </li>
+                            <ul id='dropdown2' class='dropdown-content'>
+                                <li><a href="#!">First</a></li>
+                                <li><a href="#!">Second</a></li>
+                                <li><a href="#!">Third</a></li>
+                                <li><a href="#!">Fourth</a></li>
+                            </ul>
+        </ul>
+<!-- =========================================== -->
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!" class="blue-text">one</a></li>
+            <li><a href="#!" class="blue-text">two</a></li>
+            <li class="divider"></li>
+            <li><a href="#!" class="blue-text">three</a></li>
+        </ul>
+
+        <div class="navbar-fixed">
+            <nav class="grey lighten-4 z-depth-0">
+                <div class="container">
+                    <div class="nav-wrapper">
+
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-text">
+                            <i class="material-icons">menu</i>
+                        </a>
+
+                        <a href="#!" class="brand-logo">
+                            <small><b class="blue-text text-darken-4">Cnapx</b></small>
+                        </a>
+
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a href="sass.html" class="blue-text">
+                                    About Cnapx
+                                </a>
+                            </li>
+                            <li>
+                                <a href="badges.html" class="blue-text">
+                                    Our Services
+                                </a>
+                            </li>
+                            <!-- Dropdown Trigger -->
+                            <!-- class="waves-effect waves-light btn modal-trigger" href="#modal1" -->
+                            <li>
+                                <a class="dropdown-trigger blue-text" href="#!" data-target="dropdown1">
+                                    Sign-Up
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a class=" blue waves-effect waves-light btn modal-trigger" href="#modal1">
+                                    Apply Now
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
+        
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <main>
+        <div class="container">
+            <div class="row" style="margin-top: 4rem;">
+
+                <div class="col s12" style="margin-bottom: 4rem;">
+                    <h6>
+                        <b class="purple-text text-darken-3">
+                            Transactions
+                        </b>
+                    </h6>
+                    <a href="#" class="sidenav-trigger purple-text text-darken-4" data-target="mobile-demo">
+                        <b>Menu</b>
+                    </a>
+                </div>
+
+                
+                <!-- MONEY-IN -->
+                <div class="col s6">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card z-depth-0" style="border: 1px solid #69f0ae;">
+                                <div class="card-content green-text">
+                                    <span class="card-title">Money In</span>
+                                </div>
+                                <div class="card-action">
+                                    <b>N 0.00</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- MONEY-OUT  -->
+                <div class="col s6">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card z-depth-0" style="border: 1px solid #ff8a80;">
+                                <div class="card-content red-text">
+                                    <span class="card-title">Money Out</span>
+                                </div>
+                                <div class="card-action">
+                                    <b>N 0.00</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- TABLE OF TRANSACTION  -->
+                <div class="col s12 purple lighten-5">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card z-depth-0">
+                                <div class="card-content white-text">
+                                    <span class="card-title purple-text">Recent Transactions</span>
+                                </div>
+                                <div class="card-action">
+                                    
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Transaction ID</th>
+                                            <th>Detail</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr>
+                                            <td>Alvin</td>
+                                            <td>hbgft467as</td>
+                                            <td><a href="">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alan</td>
+                                            <td>4t5637ytf6</td>
+                                            <td><a href="">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jonathan</td>
+                                            <td>yfgh576sf4</td>
+                                            <td><a href="">View</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col s12" style="margin-top: 4rem;">
+                    <div class="divider"></div>
+                    <p> <small>Powered by</small> <b class="purple-text">iservng</b></p>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">
+                        Cnapx Content
+                    </h5>
+                    <p class="grey-text text-lighten-4">
+                        You can use rows and columns here to organize your footer content.
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                Snapchat
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2023 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">
+                        <small>Powered by</small> <b>iservng</b>
+                </a>
+            </div>
+        </div>
+      </footer> -->
+
+
+
+
+
+      <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4 class="blue-text">
+                    <small><b>Create Account</b></small>
+                </h4>
+                <p>
+
+                    <!-- ---------------- -->
+                    <div class="row">
+                        <form class="col s12">
+                        
+                            <div class="row">
+                                <div class="input-field col s12">
+                                <input id="fullname" type="text" class="validate">
+                                <label for="fullname" class="blue-text">Enter your full-name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                <input id="phone" type="text" class="validate">
+                                <label for="phone" class="blue-text">Enter your phone number</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="bvn" type="text" class="validate">
+                                    <label for="bvn" class="blue-text">Enter ypur BVN number</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="submit" class="btn-small blue darken-3 " value="Submit Information">
+                                
+                                </div>
+                            </div>
+                        
+                        </form>
+                    </div>
+        
+                    <!-- ---------------- -->
+
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </div>
+
+
+
+
+    <script src="./test.js"></script>
+    <script src="./js/materialize.min.js"></script>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+
+            var modal = document.querySelectorAll('.modal');
+            M.Modal.init(modal);
+
+
+            var sidenav = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(sidenav);
+            var dropdown = document.querySelectorAll('.dropdown-trigger');
+            M.Dropdown.init(dropdown);
+
+            var slider = document.querySelectorAll('.slider');
+            M.Slider.init(slider, {
+                indicators: false,
+                height: 750
+            });
+        });
+
+        // ..
+    </script>
+</body>
+</html>

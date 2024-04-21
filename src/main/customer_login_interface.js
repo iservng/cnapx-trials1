@@ -1,5 +1,6 @@
 import { insertIntoDOM } from "../utils/insert_into_DOM";
 import { toastIt } from "../utils/toast_it";
+import { progressLoader } from "../utils/progress_loader.js";
 
 class CustomerLoginInterface 
 {
@@ -73,7 +74,7 @@ class CustomerLoginInterface
                             </div>
 
                             <div class="card-panel lighten-4 z-depth-0">
-                                <div class="white-text center-align">
+                                <div class="white-text center-align loginBtnDiv">
 
                                     <input type="submit" 
                                     class="btn white-text text-darken-3 purple darken-3 z-depth-1" value="Validate User">
@@ -84,10 +85,11 @@ class CustomerLoginInterface
                             <p><div class="divider"></div></p>
                             <p class="right-align">
                                 <small>
-                                    <i>forgot your password ?</i>
-                                    <a href="#">click Here</a>
+                                    <i>Dont have an account ?</i>
+                                    <a href="#" class="create_account_with_sys_pin">
+                                        Create Account
+                                    </a>
                                 </small>
-
                             </p>
                         </div>
                     </form>
@@ -101,15 +103,39 @@ class CustomerLoginInterface
                         <small class="grey-text"> Powered by </small>
                         <b class="purple-text text-darken-3">iservng</b>
                     </div>
-
                 </div>
-                
             </div>
             `;
             insertIntoDOM('main', content);
 
-            /**
-             * Register event handler for the submit of the customer login form 
+
+
+
+
+            /*****************************************
+             * Register event handle for the create_account_with_sys_pin
+             */
+            if(document.querySelector('.create_account_with_sys_pin'))
+            {
+                document.querySelector('.create_account_with_sys_pin').addEventListener('click', e => {
+                    e.preventDefault();
+                    import('./create_account_with_sys_pass.js')
+                    .then(m => {
+                        let createAccUi = new m.CreateAccountWithSysPass();
+                        createAccUi.createUi();
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                        toastIt('red', 'Unable to load create Account Ui');
+                    })
+                }, false);
+            }
+
+
+
+
+            /****************************
+             * Register event handler for the submit of the customer login form ..
              */
             if(document.querySelector('#customerLoginForm'));
             {
@@ -118,9 +144,10 @@ class CustomerLoginInterface
                 custLoginForm.addEventListener('submit', e => {
 
                     e.preventDefault();
+                    progressLoader('Checking...', '.loginBtnDiv');
                     import('./check_customer_login.js')
                     .then(m => {
-
+                        
                         let checker = new m.CheckCustomerLogin(e.target);
                         checker.validateOrWarn();
 
@@ -129,7 +156,6 @@ class CustomerLoginInterface
                         console.log(error.message);
                     });
                     // --------------
-
 
                 });
             }

@@ -75,9 +75,12 @@ class OfflineDB
         /**
          * Creates the object-store, specifying a name for the store and an options-object that include the key-path specifying the property name of the key field for this store.
          */
+        // let products = db.createObjectStore('products', {keyPath: "createdOn"});
         let products = db.createObjectStore('products', {autoIncrement: true});
-        products.createIndex('price', 'price', {unique:false});
-        products.createIndex('name', 'name', {unique:false});
+        products.createIndex('cost_price', 'cost_price', {unique:false});
+        products.createIndex('selling_price', 'selling_price', {unique:false});
+        products.createIndex('product_name', 'product_name', {unique:true});
+        products.createIndex('product_quantity', 'product_quantity', {unique:false});
 
         let moneyIn = db.createObjectStore('money-in', {autoIncrement: true});
         moneyIn.createIndex('createdOn', 'createdOn', {unique:true});
@@ -85,19 +88,73 @@ class OfflineDB
         let moneyOut = db.createObjectStore('money-out', {autoIncrement: true});
         moneyOut.createIndex('createdOn', 'createdOn', {unique:true});
 
+
+        /**
+         * CHECKS TODOS
+         * 1. Each products enter as sold into the cart must be entered with the selling price as at when the product was sold
+         * 
+         */
         let cart = db.createObjectStore('cart', {autoIncrement: true});
-        cart.createIndex('createdOn', 'createdOn', {unique:true});
+        cart.createIndex('createdOn', 'createdOn', {unique:false});
+        cart.createIndex('transaction_id', 'transaction_id', {unique:false});
 
         let marchant = db.createObjectStore('marchant', {autoIncrement: true});
         marchant.createIndex('createdOn', 'createdOn', {unique:true});
 
+        let customer = db.createObjectStore('customer', {autoIncrement: true});
+        customer.createIndex('createdOn', 'createdOn', {unique:true});
+        customer.createIndex('phone', 'phone', {unique:true});
+
         let dailyTransaction = db.createObjectStore('daily-transactions', {autoIncrement: true});
         dailyTransaction.createIndex('createdOn', 'createdOn', {unique:true});
+        dailyTransaction.createIndex('transaction_id', 'transaction_id', {unique:true});
         
         
         //Execute the callback
         callback();
     
     }
+
+
+
+
+
+
+
+
+
+    // =========================================
+    
+    saveToDB(objectStoreName, callback, data) {
+        this.withDB(db => {
+            // Create a read-only transaction object for this
+            let transaction = db.transaction([objectStoreName], 'readwrite');
+
+            //Get the object-store from the transaction
+            let objectStore = transaction.objectStore(objectStoreName);
+            const request = objectStore.add(data);
+
+            request.onsuccess = (event) => {
+                let productId = event.target.result;
+                callback(productId);
+            };
+        
+        });
+    }
+    // =========================================
+
+    getTransactionDetailFromDB(objectStoreName, transactionId, indexName, callback) {
+        
+        
+    }
+    // =========================================
+
+
+
+
+
+
+
+
 }
 export { OfflineDB };

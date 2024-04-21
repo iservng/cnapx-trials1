@@ -1,3 +1,4 @@
+import { insertIntoDOM } from "../utils/insert_into_DOM.js";
 import { toastIt } from "../utils/toast_it.js";
 
 class ProcessAddProductForm
@@ -18,7 +19,9 @@ class ProcessAddProductForm
         else 
         {
             //Begin to extract the form inputed--values
-            let productImage = form.product_image.files[0];
+            // let productImage = form.product_image.files[0];
+            let digitPattern = /^[\d]{1,}$/;
+
             if(!form.product_image.files[0]['name'])
             {
                 this.#_mErrors++;
@@ -29,38 +32,38 @@ class ProcessAddProductForm
                 this.#_mErrors++;
                 this.#mErrorMsg = "The file size is too large";
             }
-            else if(!form.product_name.value || !/^[a-zA-Z0-9]{3,30}$/.test(form.product_name.value))
+            else if(!form.product_name.value || !/^[a-zA-Z0-9\s-]{3,30}$/.test(form.product_name.value))
             {
                 this.#_mErrors++;
                 this.#mErrorMsg = "The product name is required";
             }
-            else if(!/^[\d]{1,}$/.test(form.cost_price.value))
+            else if(!digitPattern.test(form.cost_price.value))
             {
                 this.#_mErrors++;
                 this.#mErrorMsg = "The cost price is required";
 
             }
-            else if(!/^[\d]{1,}$/.test(form.selling_price.value))
+            else if(!digitPattern.test(form.selling_price.value))
             {
                 this.#_mErrors++;
                 this.#mErrorMsg = "The selling price is required";
             }
-            else if(!/^[\d]{1,}$/.test(form.product_quantity.value))
+            else if(!digitPattern.test(form.product_quantity.value))
             {
                 this.#_mErrors++;
                 this.#mErrorMsg = "The product quantity is required";
             }
-            else if(!/^[\d]{1,}$/.test(form.product_unit.value))
+            else if(!digitPattern.test(form.product_unit.value))
             {
                 this.#_mErrors++;
                 this.#mErrorMsg = "The product unit is required";
             }
-            else if(!/^[\d]{1,}$/.test(form.unit_price.value))
+            else if(!digitPattern.test(form.unit_price.value))
             {
                 this.#_mErrors++;
                 this.#mErrorMsg = "The unit price value is required";
             }
-            else if(!/^[\d]{1,}$/.test(form.unit_per_quantity.value))
+            else if(!digitPattern.test(form.unit_per_quantity.value))
             {
                 this.#_mErrors++;
                 this.#mErrorMsg = "The unit per quantity value is required";
@@ -93,7 +96,25 @@ class ProcessAddProductForm
     {
         if(this.#_mErrors == 0)
         {
-            console.log(this.#form);
+            // console.log(this.#form);
+            let reader = new FileReader();
+            reader.addEventListener('error', e => {
+                toastIt('red', 'The file can not be read');
+            });
+
+            reader.addEventListener('load', e => {
+
+                let img = document.createElement('img');
+                img.src = e.target.result;
+                let imgWraper = document.querySelector('#imgContainer');
+                imgWraper.append(img);
+
+                //Call the function that put the whole data in the database.
+                this.#addProduct(e.target.result, this.#form);
+
+            });
+            
+            reader.readAsDataURL(this.#form.product_image.files[0]);
 
         }
         else 
@@ -103,4 +124,107 @@ class ProcessAddProductForm
         }
 
     }
+
+
+
+
+
+    //Utility functions
+    #addProduct(imageData, form)
+    {
+        import('../indexeddb/offlinedb.js')
+        .then(m => {
+
+            const storeName = 'products';
+            const data = {
+
+                product_image: imageData,
+                product_name: form.product_name.value.trim().toUpperCase(),
+                cost_price: Number(form.cost_price.value),
+                selling_price: Number(form.selling_price.value),
+                product_quantity: Number(form.product_quantity.value),
+                quantity_price: Number(form.quantity_price.value),
+                product_unit: Number(form.product_unit.value),
+                unit_price: Number(form.unit_price.value), 
+                unit_per_quantity: Number(form.unit_per_quantity.value),
+                createdOn: Date.now(),
+                
+            };
+            let offlinedb = new m.OfflineDB();
+            offlinedb.saveToDB(storeName, this.#callBackFunc, data);
+
+        })
+        .catch(error => {
+            console.log(error.message);
+            toastIt('red', 'Unable to store the data to DB');
+        });
+
+    }
+
+
+    #callBackFunc(id)
+    {
+        console.log(id);
+        let content = `
+        <div class="container">
+            <div class="center-align" style="margin-top: 5rem;"> 
+                <h1>&checkmark;</h1>
+                <h6><b class="green-text">Done!</b></h6>
+                <p>
+                    <a href="#" class="btn-small purle add_product">Add Product</a>
+                    <a href="#" class="btn-small red shop_front">Cancel</a>
+                </p>
+            </div>
+        </div>
+        `;
+        insertIntoDOM('main', content);
+
+        //Register the add_product handler 
+        if(document.querySelectorAll('.add_product'))
+        {
+            let addProductBtns = document.querySelectorAll('.add_product');
+            addProductBtns.forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.preventDefault();
+                    import('./add_product_ui.js')
+                    .then(m => {
+                        let addProductUi = new m.AddProductUi();
+                        addProductUi.createUi();
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                        toastIt('red', 'Unable to load the UI');
+                    });
+                });
+            });
+
+        }
+
+
+
+
+
+        //Register event handler for the shop_front
+        if(document.querySelector('.shop_front'))
+        {
+            document.querySelector('.shop_front').addEventListener('click', e => {
+                e.preventDefault();
+                import('../shoppingCart/shopping_cart_home_page.js')
+                .then(m => {
+                    let shop_front = new m.ShoppingCartHomePage();
+                    shop_front.createUi();
+                })
+                .catch(error => {
+                    console.log(error.message);
+                    toastIt('red', 'Unable to load the shop front');
+                });
+            });
+        }
+        // =============
+
+
+
+
+    }
 }
+export {ProcessAddProductForm};

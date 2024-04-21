@@ -25,4 +25,5 @@ var sampleProductData = [
     },
     
 ];
-export { sampleProductData }
+export { sampleProductData };
+//

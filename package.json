@@ -12,7 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "workbox-webpack-plugin": "^7.0.0"
   },
   "dependencies": {
     "firebase": "^10.5.2",

@@ -496,7 +496,7 @@ class QRCodePaymentUi
                 cancel.addEventListener('click', e => {
                     e.preventDefault();
 
-                    import('./customer_profile_dashboard.js')
+                    import('./marchant_customer_profile_dashboard.js')
                     .then(m => {
                         let dashboard = new m.CustomerProfileDashboard();
                         dashboard.createUi();

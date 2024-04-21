@@ -84,19 +84,6 @@ class CnapxApplication
 
 
 
-            //Import and display the main-content sub-section
-            // -------------------------------------------------
-            import('../main/main_sub_section.js')
-            .then(m => {
-                let subsection = new m.MainSubSection();
-                subsection.createUi();
-            })
-            .catch(error => {
-                console.log(error.message);
-                toastIt('red', 'Unable to load subsection');
-            });
-
-
 
             //Import and display the Application footer 
             import('../footer/footer.js')

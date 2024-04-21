@@ -3,7 +3,7 @@ import { removeLandingPageSections } from "../../utils/remove_landing_page_secti
 import { removeModal } from "../../utils/remove_modal.js";
 import { removeSidenav } from "../../utils/remove_side_nav.js";
 import { insertIntoDOM } from "../../utils/insert_into_DOM.js";
-
+//
 
 class CustomerRegisterType 
 {
@@ -21,7 +21,7 @@ class CustomerRegisterType
         if(sessionStorage.getItem('customerInfo'))
         {
             this.#userData = JSON.parse(sessionStorage.getItem('customerInfo'));
-            console.log(this.#userData);
+            // console.log(this.#userData);
 
         }
         else 
@@ -41,8 +41,10 @@ class CustomerRegisterType
             // Remove Modal
             // cnapx-5a1c0
             removeModal();
+            
             // Remove Side Navigation
             removeSidenav();
+
             // Remove landing page sections
             removeLandingPageSections();
 
@@ -105,9 +107,7 @@ class CustomerRegisterType
                                     <span class="purple-text text-darken-3">
                                         
                                         <img src="./images/marchant.png" alt="">
-
                                         <br>
-
                                         <b>
                                             <a href="" data-customertype="marchant" 
                                             class="customerType">
@@ -116,15 +116,9 @@ class CustomerRegisterType
                                         </b>
                                         
                                     </span>
-                                   
-                                    
-                                       
+                                
                                 </div>
                             </div>
-
-
-
-
 
                         </div>        
                     </div>
@@ -144,13 +138,8 @@ class CustomerRegisterType
                             iservng
                         </b>
                     </div>
-                    
-                    
-
                 </div>
-
-            </div>
-            `;
+            </div>`;
             insertIntoDOM('main', content);
 
 
@@ -163,7 +152,8 @@ class CustomerRegisterType
                 typeBtns.forEach(typeBtn => {
                     typeBtn.addEventListener('click', e => {
                         e.preventDefault();
-                        // console.log(e.target);
+                        
+                        
                         import('./process_customer_registration_type.js')
                         .then(m => {
                             let customer = new m.ProcessCustomerRegistrationType(e.target);
@@ -173,7 +163,8 @@ class CustomerRegisterType
                             console.log(error.message);
                             toastIt('red', 'Unable to process register type');
                         });
-                        // ---------------
+                        // -----------------
+
                     });
                 });
             }

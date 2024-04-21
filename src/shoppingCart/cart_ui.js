@@ -2,17 +2,20 @@ import { insertIntoDOM } from "../utils/insert_into_DOM";
 import { toastIt } from "../utils/toast_it.js";
 
 import { sampleProductData } from "./sample_data.js";
+import { OfflineDB } from "../indexeddb/offlinedb.js";
+
 class CartUI 
 {
     #_mErrors;
     #mErrorMsg;
     #basket;
     #sampleProductData;
+    #offlinedb;
     constructor()
     {
         this.#_mErrors = 0;
         this.#mErrorMsg = '';
-        // this.#basket = JSON.parse(localStorage.getItem(''))
+        this.#offlinedb = new OfflineDB();
         this.#sampleProductData = sampleProductData;
         this.#basket = JSON.parse(localStorage.getItem('cartData')) || [];
 
@@ -29,7 +32,6 @@ class CartUI
         {
             let content = `
             <div class="container">
-
             <div class="row" style="margin-top: 3rem;">
 
                 <!-- USER-PROFILE-AVARTAR  -->
@@ -53,35 +55,30 @@ class CartUI
                     <div class="row">
 
                         <div class="col s12 m8 l8">
-                            <div class="card-panel purple lighten-5 z-depth-0">
+                            <div class="card-panel z-depth-0">
                                 <span class="purple-text text-darken-3">
                                     <h5><b>Cart Invoice</b></h5>
-                                    <small>Ensure to check out on the right</small>
+                                    <small>Ensure to check out on the right, select the mode of payment and continue</small>
                                 </span>
                                 <p>
-                                    <a class="btn-small purple" href="#">CLEAR INVOICE</a>
+                                    
                                 </p>
                             </div>
                             <!-- ================= -->
-                            <ul class="collection purple lighten-5" id="cartItemHolder">
+                            <ul class="collection" id="cartItemHolder">
                                 
                             </ul>
-                                     
+                                
                             <!-- ================= -->
-                            <div class="card-panel purple lighten-5 z-depth-0" style="border: 1px solid #f3e5f5;">
+                            <div class="card-panel lighten-5 z-depth-0" style="border-bottom: 1px solid #f3e5f5;">
                                 <div class="row">
-                                    <div class="col s12">
-                                        This div is 12-columns wide on all screen sizes
-                                    </div>
                                     <div class="col s6">
                                         <b>Invoice Total:</b>
                                     </div>
                                     <div class="col s6 right-align">
-                                        <h6>
-                                            <b class="purple-text text-darken-3 grand_total">
-                                                N 0.00
-                                            </b>
-                                        </h6>
+                                        <b class="purple-text text-darken-3 grand_total">
+                                            N 0.00
+                                        </b>
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +86,7 @@ class CartUI
 
                         <div class="col s12 m4 l4" id="checkout">
                             <div class="card-panel z-depth-0" style="border: 1px solid #f3e5f5;">
+                            <form id="makePaymentForm">
                                 <span class="purple-text text-darken-3">
                                     <p>
                                         
@@ -110,31 +108,41 @@ class CartUI
                                         </tr>
                                         <tr>
                                             <td>VAT</td>
-                                            <td>N 0.00</td>
+                                            <td><span style="text-decoration: line-through;">N</span> 0.00</td>
                                         </tr>
                                         <tr>
                                             <td>Shipping</td>
-                                            <td>N 0.00</td>
+                                            <td><span style="text-decoration: line-through;">N</span> 0.00</td>
                                         </tr>
                                         </tbody>
                                     </table>
 
+                                    <p>
+                                        <h6><small>Please selectpayment mode</small></h6>
+                                        <input type="hidden" id="grandTotal">
+                                        <label>
+                                            <input name="paymode" type="radio" value="cnapx"/>
+                                            <span><small>Cnapx</small></span>
+                                        </label>
+                                        <label>
+                                            <input name="paymode" type="radio" value="pos"/>
+                                            <span><small>POS</small></span>
+                                        </label>
+                                        <label>
+                                            <input name="paymode" type="radio" value="cash"/>
+                                            <span><small>Cash</small></span>
+                                        </label>
+                                    </p>
 
                                     <p>
-                                        <a href="#" class="btn green darken-3">Pay with cnapx</a>
+                                        <input type="submit" class="btn green darken-3" value="Make Payment">
                                     </p>
                                 </span>
+                                </form>
                             </div>
                         </div>
-
                     </div>        
                 </div>
-
-
-
-
-
-                
 
                 <div class="col s12 right-align" style="margin-top: 6rem;">
                     <p>
@@ -145,16 +153,43 @@ class CartUI
                         iservng
                     </b>
                 </div>
-                
-                
-
             </div>
-
         </div>
             `;
             insertIntoDOM('main', content);
 
+
+
+            //Register event handler for clear_cart
+            if(document.querySelector('.clear_cart'))
+            {
+                // document.querySelector('.clear_cart').addEventListener('click', e => {
+                //     e.preventDefault();
+                //     localStorage.removeItem('cartData');
+                //     import('../shoppingCart/shopping_cart_home_page.js')
+                //     .then(m => {
+                //         let shopHome = new m.ShoppingCartHomePage();
+                //         shopHome.createUi();
+                //     })
+                //     .catch(error => {
+                //         console.log(error.message);
+                //         toastIt('red', 'Unable to load the shop home');
+                //     });
+                // });
+            }
+
             this.#generateCartUiItems();
+
+
+
+            //Register event handler for the makePaymentForm submission
+            if(document.querySelector('#makePaymentForm'))
+            {
+                document.querySelector('#makePaymentForm').addEventListener('submit', e => {
+                    e.preventDefault();
+                    this.#processMakePaymentForm(e.target);
+                });
+            }
 
             // =======================
             //Event handler for the back to shop btn
@@ -199,71 +234,68 @@ class CartUI
 
         if(this.#basket.length !== 0)
         {
-            // console.log("Basket Full");
+            
             if(document.querySelector('#cartItemHolder'))
             {
                 let cartItemOutput = ``;
                 this.#basket.forEach(product => {
-                    let {id, item } = product;
-                    let search = this.#sampleProductData.find(inventory => inventory.id === id);
-                    let total = search.price * item;
-                    cartItemOutput += `
-                        <li class="collection-item avatar purple lighten-5">
-                            <img src=${search.img} alt="" class="circle">
-                            <span class="title"><small><b class="grey-text text-darken-3">${search.name}</b></small></span>
-                            <p><small><b>N ${search.price}</b></small> <br>
+                    let {id, item, key} = product;
 
-                                    <a href="#" class="decrement" data-decrementid=${id}>
-                                        &minus;
-                                    </a>
+                    this.#offlinedb.withDB(db => {
+                        db.transaction("products")
+                            .objectStore("products")
+                            .get(key).onsuccess = (event) => {
 
-                                    <span>&nbsp;</span>
-                                    <span>&nbsp;</span>
+                                let cartProduct = event.target.result;
+                                let total = cartProduct.selling_price * item;
 
-                                    <a href="#" id=${id}>
-                                        ${item}
-                                    </a>
+                                cartItemOutput = `
+                                    <img src=${cartProduct.product_image} alt="" class="circle">
+                                    <span class="title"><small><b class="grey-text text-darken-3">${cartProduct.product_name}</b></small></span>
+                                    <p>
+                                        <small>
+                                            <b><span style="text-decoration: line-through;">N</span> ${cartProduct.selling_price}.00</b>
+                                        </small> <br>
 
-                                    <span>&nbsp;</span>
-                                    <span>&nbsp;</span>
+                                        <a href="#" id=${id}>
+                                            ${item}
+                                        </a>
+                                    </p>
+                                    
+                                    <a href="#!" class="secondary-content">
+                                        <i class="black-text"><span style="text-decoration: line-through;">N</span> ${total}.00</i>
+                                    </a>`;
+                                
+                                let wrapper = document.querySelector('#cartItemHolder');
 
-                                    <a href="#" class="increment" data-incrementid=${id}>
-                                        +
-                                    </a>
+                                let li = document.createElement('li');
+                                li.setAttribute('class', "collection-item avatar purple lighten-5");
 
-                                    <span>&nbsp;</span>
-                                    <span>&nbsp;</span>
-                                    <span>&nbsp;</span>
+                                li.innerHTML = cartItemOutput;
 
-                                    <small>
-                                        <a href="#" class="red-text remove_item" data-removeid=${id}>Remove</a>
-                                    </small>
-                            </p>
-                            
-                            <a href="#!" class="secondary-content">
-                                <i class="black-text">N ${total}</i>
-                            </a>
-                            
-                        </li>
-                    `;
-                });
-                document.querySelector('#cartItemHolder').innerHTML = cartItemOutput;
+                                wrapper.append(li);
+                                this.#cartGrandTotalForCheckout();
 
-                this.#cartGrandTotalForCheckout();
-
-
-                // =======================
-                //Remove Item from cart
-                if(document.querySelectorAll('.remove_item'))
-                {
-                    let removeItemBtns = document.querySelectorAll('.remove_item');
-                    removeItemBtns.forEach(btn => {
-                        btn.addEventListener('click', e => {
-                            e.preventDefault();
-                            this.#removeItemFromCart(e);
-                        });
+                                // ========================
+                                if(document.querySelectorAll('.remove_item'))
+                                {
+                                    let removeItemBtns = document.querySelectorAll('.remove_item');
+                                    removeItemBtns.forEach(btn => {
+                                        btn.addEventListener('click', e => {
+                                            e.preventDefault();
+                                            this.#removeItemFromCart(e);
+                                        }, false);
+                                    });
+                                }
+                                // ========================
+                            };
                     });
-                }
+                });
+
+                
+
+
+                
                 // =======================
                 // Increment
                 if(document.querySelectorAll('.increment'))
@@ -273,7 +305,7 @@ class CartUI
                         btn.addEventListener('click', e => {
                             e.preventDefault();
                             this.#incrementQuantity(e);
-                        });
+                        }, false);
                     });
                 }
 
@@ -285,7 +317,7 @@ class CartUI
                         btn.addEventListener('click', e => {
                             e.preventDefault();
                             this.#decrimentQuantity(e);
-                        });
+                        }, false);
                     });
                 }
                 // =====================
@@ -298,12 +330,31 @@ class CartUI
             {
                 document.querySelector('#cartItemHolder').innerHTML = `
                     <li class="collection-item avatar">
-                        <p>Your cart is empty</p>
-                        <p>
-                            <a href="#" class="btn-large purple">Back</a>
-                        </p>
+                        <div class="center-align">
+                            <p>Your cart is empty</p>
+                            <p style="margin-top: 2rem;">
+                                <a href="#" class="btn-small purple shop_front">Back to shop</a>
+                            </p>
+                        </div>
                     </li>
                 `;
+
+                //Register event hander for shop_front
+                if(document.querySelector('.shop_front'))
+                {
+                    document.querySelector('.shop_front').addEventListener('click', e => {
+                        e.preventDefault();
+                        import('../shoppingCart/shopping_cart_home_page.js')
+                        .then(m => {
+                            let shopfront = new m.ShoppingCartHomePage();
+                            shopfront.createUi();
+                        })
+                        .catch(error => {
+                            console.log(error.message);
+                            toastIt('red', 'Unable to load the shop front');
+                        });
+                    });
+                }
 
             }
 
@@ -328,15 +379,45 @@ class CartUI
 
 
 
+
+
     
+    #processMakePaymentForm(form)
+    {
+        import('../shop/process_make_payment_form.js')
+        .then(m => {
+            let paymentProccessor = new m.ProcessMakePaymentForm(form);
+            paymentProccessor.validatePayment();
+        })
+        .catch(error => {
+            console.log(error.message);
+            toastIt('red', 'Unable to load the payment processor');
+        });
+    }
+
+
+
+
+    
+
+    // =====================================
     #incrementQuantity(e)
     {
         e.preventDefault();
-        let id = (e.target.dataset.incrementid);
+        let id = Number(e.target.dataset.incrementid);
+        let selling_price = Number(e.target.dataset.sellingprice);
+        let realkey = Number(e.target.dataset.incrementidkey);
+        let cost_price = Number(e.target.dataset.costprice);
 
         let search = this.#basket.find((x) => x.id === id);
         if(search === undefined)
-            this.#basket.push({id: id, item: 1});
+            this.#basket.push({
+                        id: id, 
+                        item: 1,
+                        key: realkey,
+                        selling_price: selling_price,
+                        cost_price: cost_price
+                    });
         else
             search.item += 1;
 
@@ -390,26 +471,34 @@ class CartUI
 
     #removeItemFromCart = (e) => {
 
-        // console.log(e.target);
-        let id = e.target.dataset.removeid;
-        this.#basket = this.#basket.filter(product => product.id !== id);
-        localStorage.setItem('cartData', JSON.stringify(this.#basket));
-        this.#generateCartUiItems();
-
+        console.log(e.target);
     }
 
     #cartGrandTotalForCheckout = () => {
         if(this.#basket.length !== 0)
         {
-            let amount = this.#basket.map((product) => {
-                let {id, item} = product;
-                let search = this.#sampleProductData.find(inventory => inventory.id === id);
-                return item * search.price;
-            }).reduce((x,y) => x+y,0);
             
-            let grandTotals = document.querySelectorAll('.grand_total');
-            grandTotals.forEach(grand_total => {
-                grand_total.innerHTML = `N ${amount}`;
+            let amount = 0;
+            this.#basket.forEach((product) => {
+                let {id, item, key} = product;
+
+                
+                this.#offlinedb.withDB(db => {
+                    db.transaction('products')
+                        .objectStore('products')
+                        .get(key).onsuccess = (event) => {
+
+                            let product = event.target.result;
+                            amount += product.selling_price * item;
+
+                            let grandTotals = document.querySelectorAll('.grand_total');
+                            grandTotals.forEach(grand_total => {
+                                grand_total.innerHTML = `<span style="text-decoration: line-through;">N</span> ${amount}.00`;
+                            });
+                            document.querySelector('#grandTotal').value = amount;
+                        };
+                });
+
             });
 
         }
@@ -418,14 +507,6 @@ class CartUI
             return;
         }
     }
-
-
-
-
-
-
-
-
 
 }
 export { CartUI };

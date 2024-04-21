@@ -1,5 +1,5 @@
 /**
- * The modal class is a utility class that takes  a "content" as its perameter, then uses that content as its own display. By default it will get content by calling the "createAcountForm".
+ * The modal class is a utility class that takes  a "content" as its perameter, then uses that content as its own display. By default it will get content by calling the "createAcountForm"...
  */
 
 
@@ -15,6 +15,7 @@ class ModalStructure
     #mErrorMsg;
     #action;
     #modalContent;
+
     constructor(action = 'createAcount')
     {
         this.#_mErrors = 0;
@@ -53,12 +54,10 @@ class ModalStructure
                     <h5 id="modalMainTitle" class="blue-text text-darken-4">
                         Create Account
                     </h5>
-                    
                     <p id="modalMainContent">
-                         ${this.#modalContent}
+                        ${this.#modalContent}
                     </p>
                 </div>
-                
             </div>
             `;
 
@@ -87,8 +86,6 @@ class ModalStructure
                     /**
                      * Since we have access to the form itself, then we can pass it to the class or function that will process it.
                      */
-                    
-                    // ============================
 
                     import('../modal/handlers/process_create_account_form.js')
                     .then(m => {

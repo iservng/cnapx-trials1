@@ -473,7 +473,8 @@
 
 
 
-    <script src="./test.js"></script>
+    <!-- <script src="./test.js"></script> -->
+    <script src="./utils/random_pass.js"></script>
     <script src="./js/materialize.min.js"></script>
     <script>
          document.addEventListener('DOMContentLoaded', function() {
@@ -495,6 +496,10 @@
         });
 
         // ..
+        let foo = Date.now();
+        let foo2 = new Date(foo);
+        console.log(foo2);
+        // console.log(foo);
     </script>
 </body>
 </html>
