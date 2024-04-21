@@ -1,8 +1,8 @@
 
 
 
-const siteDynamic = "site-dynamic-v1";
-const staticCacheName = 'site-static';
+const siteDynamic = "cnapx-dynamic-v1";
+const staticCacheName = 'cnapx-static';
 const asssets = [
     "./",
     "./index.html",
@@ -45,7 +45,6 @@ self.addEventListener('install', e => {
 });
 
 self.addEventListener('activate', e => {
-    // console.log("Service worker is activated ", e);//
     e.waitUntil(
         caches.keys()
         .then(keys => {
@@ -69,7 +68,7 @@ self.addEventListener('fetch', e => {
             return cacheResponse || fetch(e.request).then(fetchRespond => {
                 return caches.open(siteDynamic).then(cache => {
                     cache.put(e.request.url, fetchRespond.clone());
-                    limitCacheSize(siteDynamic, 16)
+                    limitCacheSize(siteDynamic, 20)
                     return fetchRespond;
                 })
             })

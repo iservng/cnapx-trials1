@@ -1,3 +1,5 @@
+
+//Its job is just to register the service worke for now
 if('serviceWorker' in navigator)
 {
     
