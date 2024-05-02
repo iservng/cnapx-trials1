@@ -1,8 +1,8 @@
-import { toastIt } from "../../utils/toast_it";
-import { removeLandingPageSections } from "../../utils/remove_landing_page_sections.js";
-import { removeModal } from "../../utils/remove_modal.js";
-import { removeSidenav } from "../../utils/remove_side_nav.js";
-import { insertIntoDOM } from "../../utils/insert_into_DOM.js";
+import { toastIt } from "../../utils_src/toast_it.js";
+import { removeLandingPageSections } from "../../utils_src/remove_landing_page_sections.js";
+import { removeModal } from "../../utils_src/remove_modal.js";
+import { removeSidenav } from "../../utils_src/remove_side_nav.js";
+import { insertIntoDOM } from "../../utils_src/insert_into_DOM.js";
 //
 
 class CustomerRegisterType 

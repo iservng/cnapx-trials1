@@ -1,9 +1,9 @@
 
-import { insertIntoDOM } from "../utils/insert_into_DOM.js";
-import { toastIt } from "../utils/toast_it.js";
-import { removeSidenav } from "../utils/remove_side_nav.js";
-import { removeModal } from "../utils/remove_modal.js";
-import { removeLandingPageSections } from '../utils/remove_landing_page_sections.js';
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { toastIt } from "../utils_src/toast_it.js";
+import { removeSidenav } from "../utils_src/remove_side_nav.js";
+import { removeModal } from "../utils_src/remove_modal.js";
+import { removeLandingPageSections } from '../utils_src/remove_landing_page_sections.js';
 // import { doc } from "firebase/firestore";
 
 class CustomerProfileDashboard
@@ -249,7 +249,7 @@ class CustomerProfileDashboard
                 document.querySelector('.records').addEventListener('click', e => {
                     e.preventDefault();
                     // console.log("ok Fanta.");
-                    import('../shop/records_ui.js')
+                    import('../shop_src/records_ui.js')
                     .then(m => {
 
                         let recordUi = new m.RecordsUi();
@@ -278,7 +278,7 @@ class CustomerProfileDashboard
                         
                         //Dynamically import and Execute the logout class
                         // ---- 
-                        import('../utils/logout_class.js')
+                        import('../utils_src/logout_class.js')
                         .then(m => {
                             let logout = new m.Logout();
                             logout.logUserOut();
@@ -376,7 +376,7 @@ class CustomerProfileDashboard
                         /**
                          * Dynamically import and execute the shopping-cart class
                          */
-                        import('../shoppingCart/shopping_cart_home_page.js')
+                        import('../shoppingCart_src/shopping_cart_home_page.js')
                         .then(m => {
                             let shoppingCart = new m.ShoppingCartHomePage();
                             shoppingCart.createUi();

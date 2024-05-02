@@ -1,4 +1,4 @@
-import { toastIt } from "../utils/toast_it";
+import { toastIt } from "../utils_src/toast_it.js";
 
 
 class CheckAdminLogin

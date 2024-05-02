@@ -3,9 +3,9 @@
  */
 
 
-import { insertIntoDOM } from "../utils/insert_into_DOM.js";
-import { smallSpinner } from "../utils/small_spinner.js";
-import { toastIt } from "../utils/toast_it.js";
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { smallSpinner } from "../utils_src/small_spinner.js";
+import { toastIt } from "../utils_src/toast_it.js";
 import { getCreateAccountForm } from "../views/create_account_form.js";;
 
 
@@ -61,11 +61,7 @@ class ModalStructure
             </div>
             `;
 
-            // var modals = document.querySelectorAll('.modal');
-            // modals.forEach(modal => {
-            //     let instance = M.Modal.getInstance(modal);
-            //     instance.close();
-            // });..
+            
             
 
 

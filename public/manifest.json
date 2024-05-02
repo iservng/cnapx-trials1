@@ -1,7 +1,9 @@
 {
+
+    
     "name": "Cnapx Pay",
     "short_name": "Cnapx",
-    "start_url": "./index.html",
+    "start_url": "./bookkeeper.html",
     "display": "standalone",
     "background_color": "white",
     "theme_color": "purple",

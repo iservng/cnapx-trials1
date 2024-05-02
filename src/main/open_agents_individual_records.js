@@ -1,7 +1,7 @@
-import { insertIntoDOM } from "../utils/insert_into_DOM.js";
-import { toastIt } from "../utils/toast_it.js";
-import { COMPANY } from "../config/app_constants.js";
-import { smallSpinner } from "../utils/small_spinner.js";
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { toastIt } from "../utils_src/toast_it.js";
+import { COMPANY } from "../config_src/app_constants.js";
+import { smallSpinner } from "../utils_src/small_spinner.js";
 import { collection, getCountFromServer, getDocs, getFirestore, query, where } from "firebase/firestore";
 
 class OpenAgentsIndivualRecords 

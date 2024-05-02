@@ -1,8 +1,8 @@
-import { insertIntoDOM } from "../utils/insert_into_DOM";
-import { toastIt } from "../utils/toast_it";
-import { generateShortPassword } from "../utils/random_pass.js";
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { toastIt } from "../utils_src/toast_it.js";
+import { generateShortPassword } from "../utils_src/random_pass.js";
 import { getCreateAccountForm } from "../views/create_account_form";
-import { progressLoader } from "../utils/progress_loader.js";
+import { progressLoader } from "../utils_src/progress_loader.js";
 class AdminRegisterMarketingManagerUi
 {
     #_mErrors;

@@ -1,8 +1,8 @@
-import { toastIt } from "../utils/toast_it.js";
-import { insertIntoDOM } from '../utils/insert_into_DOM.js';
+import { toastIt } from "../utils_src/toast_it.js";
+import { insertIntoDOM } from '../utils_src/insert_into_DOM.js';
 
-import { APP_NAME, DEFAILT_MENU } from '../config/app_constants.js';
-import { removeSidenav } from "../utils/remove_side_nav.js";
+import { APP_NAME, DEFAILT_MENU } from '../config_src/app_constants.js';
+import { removeSidenav } from "../utils_src/remove_side_nav.js";
 /**
  * This class is responsible to taking information, then display the header part of this application using the specified information. This information in question is usually 
  * 1. The logo name of the Application
@@ -290,7 +290,7 @@ class UserProfileMenu
                     btn.addEventListener('click', e => {
                         e.preventDefault();
                         //Dynamically import and execute the cartUI class
-                        import('../shoppingCart/cart_ui.js')
+                        import('../shoppingCart_src/cart_ui.js')
                         .then(m => {
                             let cartUI = new m.CartUI();
                             cartUI.createUi();
@@ -320,7 +320,7 @@ class UserProfileMenu
                     btn.addEventListener('click', e => {
                         e.preventDefault();
                         // Dynamically load and execute the class responsible for showing the ui used for collecting product information and processing it
-                        import('../shop/add_product_ui.js')
+                        import('../shop_src/add_product_ui.js')
                         .then(m => {
                             let addProductUi = new m.AddProductUi();
                             addProductUi.createUi();
@@ -349,7 +349,7 @@ class UserProfileMenu
                 goToShopBtns.forEach(btn => {
                     btn.addEventListener('click', e => {
                         e.preventDefault();
-                        import('../shoppingCart/shopping_cart_home_page.js')
+                        import('../shoppingCart_src/shopping_cart_home_page.js')
                         .then(m => {
                             let shopfront = new m.ShoppingCartHomePage();
                             shopfront.createUi();
@@ -371,7 +371,7 @@ class UserProfileMenu
                 document.querySelector('.list_customers').addEventListener('click', e => {
                     e.preventDefault();
                     //Load the class responsible for displaying customers list
-                    import('../shop/list_customers.js')
+                    import('../shop_src/list_customers.js')
                     .then(m => {
                         let customerList = new m.ListCustomers();
                         customerList.createUi();
@@ -398,7 +398,7 @@ class UserProfileMenu
                 recordMoneyInBtns.forEach(btn => {
                     btn.addEventListener('click', e => {
                         e.preventDefault();
-                        import('../shop/add_money_in_ui.js')
+                        import('../shop_src/add_money_in_ui.js')
                         .then(m => {
                             let moneyInUi = new m.AddMoneyInUi();
                             moneyInUi.createUi();
@@ -425,7 +425,7 @@ class UserProfileMenu
                 recordMoneyOutBtns.forEach(btn => {
                     btn.addEventListener('click', e => {
                         e.preventDefault();
-                        import('../shop/add_money_out_ui.js')
+                        import('../shop_src/add_money_out_ui.js')
                         .then(m => {
                             let moneyOutUi = new m.AddMoneyOutUi();
                             moneyOutUi.createUi();
@@ -454,7 +454,7 @@ class UserProfileMenu
                 transactionsBtns.forEach(btn => {
                     btn.addEventListener('click', e => {
                         e.preventDefault();
-                        import('../shop/transactions_ui.js')
+                        import('../shop_src/transactions_ui.js')
                         .then(m => {
                             let transactionsUi = new m.TransactionsUi();
                             transactionsUi.createUi();
@@ -479,7 +479,7 @@ class UserProfileMenu
                 document.querySelector('.checks_and_balances').addEventListener('click', e => {
                     e.preventDefault();
                     //Dynamically import and execute the class responsible
-                    import('../shop/checks_and_balances.js')
+                    import('../shop_src/checks_and_balances.js')
                     .then(m => {
                         let checks_and_balances = new m.ChecksAndBalances();
                         checks_and_balances.createUi();
@@ -503,7 +503,7 @@ class UserProfileMenu
                 recordsBtns.forEach(btn => {
                     btn.addEventListener('click', e => {
                         e.preventDefault();
-                        import('../shop/records_ui.js')
+                        import('../shop_src/records_ui.js')
                         .then(m => {
                             let recodsUi = new m.RecordsUi();
                             recodsUi.createUi();
@@ -527,7 +527,7 @@ class UserProfileMenu
                 logoutBtns.forEach(btn => {
                     btn.addEventListener('click', e => {
                         e.preventDefault();
-                        import('../utils/logout_class.js')
+                        import('../utils_src/logout_class.js')
                         .then(m => {
                             let logout = new m.Logout();
                             logout.logUserOut();

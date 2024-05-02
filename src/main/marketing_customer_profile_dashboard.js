@@ -1,10 +1,10 @@
 
-import { insertIntoDOM } from "../utils/insert_into_DOM.js";
-import { toastIt } from "../utils/toast_it.js";
-import { removeSidenav } from "../utils/remove_side_nav.js";
-import { removeModal } from "../utils/remove_modal.js";
-import { removeLandingPageSections } from '../utils/remove_landing_page_sections.js';
-import { COMPANY } from "../config/app_constants.js";
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { toastIt } from "../utils_src/toast_it.js";
+import { removeSidenav } from "../utils_src/remove_side_nav.js";
+import { removeModal } from "../utils_src/remove_modal.js";
+import { removeLandingPageSections } from '../utils_src/remove_landing_page_sections.js';
+import { COMPANY } from "../config_src/app_constants.js";
 import { 
     query, 
     getCountFromServer, 
@@ -12,7 +12,7 @@ import {
     where, 
     collection 
 } from "firebase/firestore";
-import { smallSpinner } from "../utils/small_spinner.js";
+import { smallSpinner } from "../utils_src/small_spinner.js";
 
 class MarketingProfileDashboard
 {
@@ -240,7 +240,7 @@ class MarketingProfileDashboard
 
                         e.preventDefault();
                         //Dynamically import and Execute the logout class
-                        import('../utils/logout_class.js')
+                        import('../utils_src/logout_class.js')
                         .then(m => {
                             let logout = new m.Logout();
                             logout.logUserOut();

@@ -1,5 +1,5 @@
-import { insertIntoDOM } from "../utils/insert_into_DOM";
-import { toastIt } from "../utils/toast_it";
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { toastIt } from "../utils_src/toast_it.js";
 
 
 class AdminLoginUi

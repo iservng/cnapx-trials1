@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!--Import Google Icon Font-->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <!-- Import materialize.css -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CnapxPay</title>
+
+    <link rel="stylesheet" href="./css/materialize.min.css">
+
+
+    <!-- PRODUCTION CSS -->
+    <!-- Compiled and minified CSS -->
+    <!-- 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+    -->
+    <!-- Manifest file link -->
+    <link rel="manifest" href="./manifest.json">
+    <!-- IOS Support -->
+    <link rel="apple-touch-icon" href="./images/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="purple">
+    <meta name="theme-color" content="purple">
+</head>
+<body>
+
+
+
+
+
+    <header>
+        <!-- SIDE NAVIGATION OF APPLICATION -->
+            <!-- SideNav Structure -->
+            <!-- SideNav Structure class="blue lighten-1"-->
+
+        <ul id="mobile-demo" class="sidenav grey lighten-3">
+            <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <!-- <img src="images/office.jpg"> -->
+                        </div>
+                        <a href="#user">
+                        
+                            <img class="circle" src="images/logo.jpg" style="margin-left: 2rem; margin-top: 2rem;">
+                            
+                        </a>
+                        <a href="#">
+                            <span class="purple-text text-darken-4 name">
+                                <h5><b>Cnapx</b><b class="purple-text text-darken-2" style="font-family: tahoma;">Pay</b></h5>
+                            </span>
+                        </a>
+                    <a href="#email">
+                        <span class="purple-text text-darken-2 email">
+                            <small>Cnap</small>
+                        </span>
+                    </a>
+                        
+                </div>
+            </li>
+
+            <div class="divider"></div>
+            <li>
+                <a href="#!" class="purple-text text-darken-2 dashboard_ui" style="font-weight: bolder;">
+                    Dashboard
+                </a>
+            </li>
+
+            <div class="divider"></div>
+            <li>
+                <a class="cart-ui" href="#">
+                    <b class="black-text cartAmount">0</b>
+                    <img class="responsive-img" src="./images/cart-images/cart2.png">
+                </a>
+            </li>
+
+            <div class="divider"></div>
+            
+            <!--DROP-DOWN-->
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header purple-text text-darken-2">
+                            <b>Manage Shop</b>
+                        </a>
+                        <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <a href="#!" class="go_to_shop">
+                                    Shop Front
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="add_product">
+                                    Add Product
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="records">
+                                    Inventory Records
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="transactions">
+                                    Transactions
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="checks_and_balances">
+                                    Checks and Balances
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="record_money_in">
+                                    Record Money-in
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="record_money_out">
+                                    Record Money-out
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="list_customers">
+                                    Customers
+                                </a>
+                            </li>
+                        </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!--DROP-DOWN-->
+                
+            <div class="divider"></div>
+            <li>
+                <a href="#!" class="purple-text text-darken-2">
+                    <b>Scan QR-code</b>
+                </a>
+            </li>
+            <div class="divider"></div>
+            <li>
+                <a href="#!" class="purple-text text-darken-2">
+                    <b>Check Balance</b>
+                </a>
+            </li>
+            <div class="divider"></div>
+            <li>
+                    
+                <a href="#!" class="purple-text text-darken-2">
+                    <b>Link Account</b>
+                </a>
+            </li>
+            <div class="divider"></div>
+            <li>
+                <a href="#" class="purple-text text-darken-2 logout">
+                    <b>Logout</b>
+                </a>
+            </li>
+        </ul>
+            <!-- SIDE NAVIGATION OF APPLICATION ENDS -->
+
+
+            <!-- MAIN MENU OF APPLICATION -->
+            <!-- 
+                Dropdown Structure 
+            -->
+
+            <ul id="dropdown1" class="dropdown-content">
+                <li>
+                    <a href="#!" class="blue-text dashboard_ui">
+                        <small>Dashboard</small>
+                    </a>
+                </li>
+                <li>
+                    <small>
+                        <a href="#!" class="blue-text admin_manage_profile">
+                            Manage Profile
+                        </a>
+                    </small>
+                </li>
+                
+                <li class="divider"></li>
+                <li>
+                    <a href="#!" class="blue-text">
+                        <small>View Profile</small>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="navbar-fixed">
+                <nav class="grey lighten-3 z-depth-0">
+                    <div class="container">
+                        <div class="nav-wrapper">
+
+                            <a href="#" data-target="mobile-demo" class="sidenav-trigger purple-text">
+                                <i class="material-icons">menu</i>
+                            </a>
+
+                            <a href="./bookkeeper.html" class="brand-logo">
+                                <small>
+                                    <b class="purple-text text-darken-2">Cnapx</b><b class="purple-text text-accent-1" style="font-family: tahoma;">Pay</b>
+                                </small>
+                            </a>
+
+                            <!--The Main-menu starts here -->
+                            <ul class="right hide-on-med-and-down">
+                                
+                                
+                                <!-- Dropdown Trigger -->
+                                <!-- class="waves-effect waves-light btn modal-trigger" href="#modal1" -->
+
+                                
+                                <li>
+                                    <a class="dropdown-trigger purple-text" href="#!" data-target="dropdown1">
+                                        Soma
+                                    </a>
+                                </li>
+                                
+
+                                <li>
+                                    <a class="purple darken-3 white-text waves-effect waves-light btn-small logout" href="#">
+                                        Logout
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cart-ui" href="#">
+                                        <b class="black-text cartAmount">0</b>
+                                        <img class="responsive-img" src="./images/cart-images/cart2.png">
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            <!--The Main-menu stops here -->
+                        </div>
+                    </div>
+                </nav>
+            </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <main>
+        <div class="slider">
+            <ul class="slides">
+                <li class="purple">
+                    <!--
+                    <img src="https://lorempixel.com/580/250/nature/4"> 
+                    --> 
+                    <!-- random image -->
+                    <div class="caption center-align">
+
+                        <h2 class="white-text text-accent-4"><b>Cnaps</b></h2>
+                        <h3><small>The Fastest Way to Pay!</small></h3>
+                        
+                        <p>
+                            <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a>
+                        </p>
+
+                    </div>
+                </li>
+                <li class="purple">
+                    <!--
+                    <img src="https://lorempixel.com/580/250/nature/4"> 
+                    --> 
+                    <!-- random image -->
+                    <div class="caption left-align">
+                        <h2 class="white-text text-accent-4"><b>Cnapx</b></h2>
+                        <h3><small>Secure Online Payment!</small></h3>
+                        
+                        <p>
+                            <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a>
+                        </p>
+                    </div>
+                </li>
+                <li class="purple">
+                    <!--
+                    <img src="https://lorempixel.com/580/250/nature/4"> 
+                    --> 
+                    <!-- random image -->
+                    <div class="caption right-align">
+                        <h2 class="white-text text-accent-4"><b>Cnapx</b></h2>
+                        <h3><small>Payment Easier and Smooth!</small></h3>
+                        <p>
+                            <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a>
+                        </p>
+                    </div>
+                </li>
+                <li class="purple">
+                    <!--
+                    <img src="https://lorempixel.com/580/250/nature/4"> 
+                    -->
+                    <!-- random image -->
+                    <div class="caption center-align">
+                        <h2 class="white-text text-accent-4"><b>Cnapx</b></h2>
+                        <h3><small>For Snappy Payment!</small></h3>
+                        <p>
+                            <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+
+
+
+    <section class="landing-page grey darken-2" id="howItWorks" style="padding-top: 2rem; margin-bottom: 3rem;">
+        <div class="container">
+            <div class="row">
+                <div class="div col s12 grey darken-2 center-align" style="padding-bottom: 20px;">
+                    <h4>
+                        <b class="white-text">
+                            Simple solutions to power your business
+                        </b>
+                    </h4>
+
+                    <h6>
+                        <b class="white-text">
+                            Collect payments and manage operations with a point of sale solution that meets all your needs 
+                        </b>
+                    </h6>
+                    <p style="margin-top: 2rem;">
+                        <a href="#modal1" class="btn-large white purple-text modal-trigger">
+                            Open an Account
+                        </a>
+                        <!-- <a href="#" data-target="mobile-demo" class="btn sidenav-trigger purple-text">
+                            <i class="material-icons">menu</i>
+                        </a> -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="landing-page" style="margin-bottom: 4rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h4 class="purple-text">
+                        Why Choose Us
+                    </h4>
+                </div>
+                
+                <!-- WRITE UP SIDE  -->
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                        <div class="card z-depth-0">
+                            <div class="card-content 
+                            grey-text text-darken-3">
+                                <span class="card-title">
+                                    All the tools you need to run you busines with ease
+                                </span>
+                                <h6 class="purple-text" style="margin-top: 20px;">
+                                    Business Account.
+                                </h6>
+                                <p style="margin-bottom: 20px;">
+                                    <b>
+                                        A free busines account to power your business.
+                                    </b>
+                                </p>
+                                <p>
+                                    Open a free busines account in you busines name, in minutes. Access roun d the clock support with no hidden fees and complete comtrol over your account.
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#modal1" class="btn-large purple modal-trigger">
+                                    Register Now
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PICTURE SIDE  -->
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card z-depth-0">
+                                <div class="card-image">
+                                    <img src="./images/lp01.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+
+
+
+
+
+
+
+    <section class="landing-page" style="margin-bottom: 4rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h4 class="purple-text">
+                        POS
+                    </h4>
+                </div>
+                
+                <!-- WRITE UP SIDE  -->
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                        <div class="card z-depth-0">
+                            <div class="card-content grey-text text-darken-3">
+                                <span class="card-title">
+                                    Point of sale terminal
+                                </span>
+                                <p style="margin-bottom: 30px;">
+                                    <b>
+                                        POS Machine for mobile payment acceptance.
+                                    </b>
+                                </p>
+                                <p>
+                                    Accept card and transfer payments seamlessly, manage your inventory, manage your transaction records and issue reciepts with a releable point of sale terminal. Enjoy instant settlement, easy dispute resolution and instant payment every time.
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#modal1" class="btn-large purple modal-trigger">
+                                    Open Account Now
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PICTURE SIDE  -->
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card z-depth-0">
+                                <div class="card-image">
+                                    <img src="./images/lp02.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="landing-page" style="margin-bottom: 4rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h4 class="purple-text">Card Reader</h4>
+                </div>
+                
+                <!-- WRITE UP SIDE  -->
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                        <div class="card z-depth-0">
+                            <div class="card-content grey-text text-darken-3">
+                                <span class="card-title">
+                                    CnapxPay Card Reader
+                                </span>
+                                <p style="margin-bottom: 30px;">
+                                    <b>A smart card reader for your business comfort</b>
+                                </p>
+                                <p>
+                                    Order a free CnapxPay card reader for easy mobile payment acceptance and get it in 48 hours. 
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#modal1" class="btn-large purple modal-trigger">Get CnapxPay card-reader</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PICTURE SIDE  -->
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card z-depth-0">
+                                <div class="card-image">
+                                    <img src="./images/lp03.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- FOUR BOXES  -->
+    <section class="landing-page" style="margin-bottom: 5rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12" style="margin-bottom: 2rem;">
+                    <h4 class="purple-text">
+                        What More
+                    </h4>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card-panel center-align">
+                                <h5 class="purple-text">
+                                    &pound;&yen;
+                                </h5>
+                                <h5 class="purple-text">
+                                    Explore
+                                </h5>
+                                <span class="purple-text">
+                                    Explore more way to take your business to the next level .
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                        <div class="card-panel purple accent-4 center-align">
+                            <h5 class="white-text">
+                                &pound;&yen;
+                            </h5>
+                            <h5 class="white-text">
+                                Manage
+                            </h5>
+                            <span class="white-text">
+                                Easily handle multiple business in one place
+                            </span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                        <div class="card-panel purple accent-4 center-align">
+                            <h5 class="white-text">
+                                &pound;&yen;
+                            </h5>
+                            <h5 class="white-text">
+                                Performance
+                            </h5>
+                            <span class="white-text">
+                                Keep your finger on the pulse of your of your business
+                            </span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card-panel white accent-4 center-align">
+                                <h5 class="purple-text">
+                                    &pound;&yen;
+                                </h5>
+                                <h5 class="purple-text">
+                                    Easy Help 
+                                </h5>
+                                <span class="purple-text">
+                                    Quick and accessible support whenever you need it.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <section id="categories" class="landing-page"></section> -->
+    <footer class="purple page-footer landing-page" id="footerId">
+        <div class="container">
+            <div class="row">
+            <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Company </h5>
+            <ul>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Our Services
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Our Team
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Contact Us
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Pricing
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Connect with us
+                    </a>
+                </li>
+                <p>
+                    Icons here
+                </p>
+            </ul>
+        </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Business</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                Business Account
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                Point of Sales Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                CnapxPay Card Reader
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2023 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">
+                        <small>Powered by</small> <b>iservng</b>
+                </a>
+            </div>
+        </div> 
+    </footer>
+
+
+    <!-- Modal Structure -->
+    <div id="modalStructure"></div>
+        
+
+    <!-- PRODUCTION JS  -->
+    <!-- Compiled and minified JavaScript -->
+    <!-- 
+        <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+    -->
+
+    <!-- <script src="./app.js"></script> -->
+    <script>
+        // localStorage.clear();//
+    </script>
+    <script src="./register_sw.js"></script>
+    <script src="./js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sidenav = document.querySelectorAll('.sidenav');
+                M.Sidenav.init(sidenav);
+                var dropdown = document.querySelectorAll('.dropdown-trigger');
+                M.Dropdown.init(dropdown);
+
+                var collapsible = document.querySelectorAll('.collapsible');
+                M.Collapsible.init(collapsible);
+
+                var slider = document.querySelectorAll('.slider');
+                M.Slider.init(slider, {
+                    indicators: false,
+                    height: 600
+                });
+        });
+    </script>
+
+    <script type="module" src="./js/createIndexeddb.js"></script>
+    <script type="module" src="./js/bookkeeping.js"></script>
+    
+</body>
+</html>

@@ -1,9 +1,9 @@
 
-import { insertIntoDOM } from "../utils/insert_into_DOM.js";
-import { toastIt } from "../utils/toast_it.js";
-import { removeSidenav } from "../utils/remove_side_nav.js";
-import { removeModal } from "../utils/remove_modal.js";
-import { removeLandingPageSections } from '../utils/remove_landing_page_sections.js';
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { toastIt } from "../utils_src/toast_it.js";
+import { removeSidenav } from "../utils_src/remove_side_nav.js";
+import { removeModal } from "../utils_src/remove_modal.js";
+import { removeLandingPageSections } from '../utils_src/remove_landing_page_sections.js';
 import { collection, getFirestore, where, query, getCountFromServer} from "firebase/firestore";
 // import { doc } from "firebase/firestore";
 
@@ -371,7 +371,7 @@ class AgentProfileDashboard
                     logoutBtn.addEventListener('click', e => {
                         e.preventDefault();
                         //Dynamically import and Execute the logout class
-                        import('../utils/logout_class.js')
+                        import('../utils_src/logout_class.js')
                         .then(m => {
                             let logout = new m.Logout();
                             logout.logUserOut();

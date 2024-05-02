@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- Import materialize.css -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,11 +18,320 @@
     <!-- 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
     -->
+    <!-- Manifest file link -->
     <link rel="manifest" href="./manifest.json">
+    <!-- IOS Support -->
+    <link rel="apple-touch-icon" href="./images/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="purple">
+    <meta name="theme-color" content="purple">
 </head>
 <body>
-    <header></header>
-    <main></main>
+
+
+
+
+
+    <header>
+        <!-- SIDE NAVIGATION OF APPLICATION -->
+            <!-- SideNav Structure -->
+            <!-- SideNav Structure class="blue lighten-1"-->
+
+        <ul id="mobile-demo" class="sidenav grey lighten-3">
+            <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <!-- <img src="images/office.jpg"> -->
+                        </div>
+                        <a href="#user">
+                        
+                            <img class="circle" src="images/logo.jpg" style="margin-left: 2rem; margin-top: 2rem;">
+                            
+                        </a>
+                        <a href="#">
+                            <span class="purple-text text-darken-4 name">
+                                <h5><b>Cnapx</b><b class="purple-text text-darken-2" style="font-family: tahoma;">Pay</b></h5>
+                            </span>
+                        </a>
+                    <a href="#email">
+                        <span class="purple-text text-darken-2 email">
+                            <small>Cnap</small>
+                        </span>
+                    </a>
+                        
+                </div>
+            </li>
+
+            <div class="divider"></div>
+            <li>
+                <a href="#!" class="purple-text text-darken-2 dashboard_ui" style="font-weight: bolder;">
+                    Dashboard
+                </a>
+            </li>
+
+            <div class="divider"></div>
+            <li>
+                <a class="cart-ui" href="#">
+                    <b class="black-text cartAmount">0</b>
+                    <img class="responsive-img" src="./images/cart-images/cart2.png">
+                </a>
+            </li>
+
+            <div class="divider"></div>
+            
+            <!--DROP-DOWN-->
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header purple-text text-darken-2">
+                            <b>Manage Shop</b>
+                        </a>
+                        <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <a href="#!" class="go_to_shop">
+                                    Shop Front
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="add_product">
+                                    Add Product
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="records">
+                                    Inventory Records
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="transactions">
+                                    Transactions
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="checks_and_balances">
+                                    Checks and Balances
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="record_money_in">
+                                    Record Money-in
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="record_money_out">
+                                    Record Money-out
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="list_customers">
+                                    Customers
+                                </a>
+                            </li>
+                        </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!--DROP-DOWN-->
+                
+            <div class="divider"></div>
+            <li>
+                <a href="#!" class="purple-text text-darken-2">
+                    <b>Scan QR-code</b>
+                </a>
+            </li>
+            
+            <div class="divider"></div>
+            <li>
+                    
+                <a href="#!" class="purple-text text-darken-2">
+                    <b>Create Account</b>
+                </a>
+            </li>
+            <div class="divider"></div>
+            <li>
+                <a href="#" class="purple-text text-darken-2 login">
+                    <b>Login</b>
+                </a>
+            </li>
+        </ul>
+            <!-- SIDE NAVIGATION OF APPLICATION ENDS -->
+
+
+            <!-- MAIN MENU OF APPLICATION -->
+            <!-- 
+                Dropdown Structure 
+            -->
+
+            <ul id="dropdown1" class="dropdown-content">
+                <li>
+                    <a href="#!" class="blue-text dashboard_ui">
+                        <small>Cnapx Pos</small>
+                    </a>
+                </li>
+            
+                <li class="divider"></li>
+                <li>
+                    <a href="#!" class="blue-text">
+                        <small>Contact Us</small>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="navbar-fixed">
+                <nav class="grey lighten-3 z-depth-0">
+                    <div class="container">
+                        <div class="nav-wrapper">
+
+                            <a href="#" data-target="mobile-demo" class="sidenav-trigger purple-text">
+                                <i class="material-icons">menu</i>
+                            </a>
+
+                            <a href="" class="brand-logo">
+                                <small>
+                                    <b class="purple-text text-darken-2">Cnapx</b><b class="purple-text text-accent-1" style="font-family: tahoma;">Pay</b>
+                                </small>
+                            </a>
+
+                            <!--The Main-menu starts here -->
+                            <ul class="right hide-on-med-and-down">
+                                
+                                
+                                <!-- Dropdown Trigger -->
+                                <!-- class="waves-effect waves-light btn modal-trigger" href="#modal1" -->
+                                <li>
+                                    <a class="dropdown-trigger purple-text active" href="#!" data-target="dropdown1">
+                                        About Us
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a class="purple-text active" href="#!">
+                                        Sign Up
+                                    </a>
+                                </li>
+                                
+
+                                <li>
+                                    <a class="purple darken-3 white-text waves-effect waves-light btn-small login" href="#">
+                                        Login
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cart-ui" href="#">
+                                        <b class="black-text cartAmount">0</b>
+                                        <img class="responsive-img" src="./images/cart-images/cart2.png">
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            <!--The Main-menu stops here -->
+                        </div>
+                    </div>
+                </nav>
+            </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <main>
+        <div class="slider">
+            <ul class="slides">
+                <li class="purple">
+                    <!--
+                    <img src="https://lorempixel.com/580/250/nature/4"> 
+                    --> 
+                    <!-- random image -->
+                    <div class="caption center-align">
+
+                        <h2 class="white-text text-accent-4"><b>Cnaps</b></h2>
+                        <h3><small>The Fastest Way to Pay!</small></h3>
+                        
+                        <p>
+                            <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a>
+                        </p>
+
+                    </div>
+                </li>
+                <li class="purple">
+                    <!--
+                    <img src="https://lorempixel.com/580/250/nature/4"> 
+                    --> 
+                    <!-- random image -->
+                    <div class="caption left-align">
+                        <h2 class="white-text text-accent-4"><b>Cnapx</b></h2>
+                        <h3><small>Secure Online Payment!</small></h3>
+                        
+                        <p>
+                            <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a>
+                        </p>
+                    </div>
+                </li>
+                <li class="purple">
+                    <!--
+                    <img src="https://lorempixel.com/580/250/nature/4"> 
+                    --> 
+                    <!-- random image -->
+                    <div class="caption right-align">
+                        <h2 class="white-text text-accent-4"><b>Cnapx</b></h2>
+                        <h3><small>Payment Easier and Smooth!</small></h3>
+                        <p>
+                            <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a>
+                        </p>
+                    </div>
+                </li>
+                <li class="purple">
+                    <!--
+                    <img src="https://lorempixel.com/580/250/nature/4"> 
+                    -->
+                    <!-- random image -->
+                    <div class="caption center-align">
+                        <h2 class="white-text text-accent-4"><b>Cnapx</b></h2>
+                        <h3><small>For Snappy Payment!</small></h3>
+                        <p>
+                            <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
 
 
 
@@ -36,16 +345,19 @@
                             Simple solutions to power your business
                         </b>
                     </h4>
+
                     <h6>
                         <b class="white-text">
                             Collect payments and manage operations with a point of sale solution that meets all your needs 
                         </b>
                     </h6>
                     <p style="margin-top: 2rem;">
-                        <!-- <a href="#modal1" class="btn-large white lighten-4 purple-text text-darken-4 modal-trigger">GET STARTED</a> -->
                         <a href="#modal1" class="btn-large white purple-text modal-trigger">
                             Open an Account
                         </a>
+                        <!-- <a href="#" data-target="mobile-demo" class="btn sidenav-trigger purple-text">
+                            <i class="material-icons">menu</i>
+                        </a> -->
                     </p>
                 </div>
             </div>
@@ -75,11 +387,11 @@
                                     All the tools you need to run you busines with ease
                                 </span>
                                 <h6 class="purple-text" style="margin-top: 20px;">
-                                    Business Account
+                                    Business Account.
                                 </h6>
                                 <p style="margin-bottom: 20px;">
                                     <b>
-                                        A free busines account to power your business
+                                        A free busines account to power your business.
                                     </b>
                                 </p>
                                 <p>
@@ -407,7 +719,83 @@
 
 
     <!-- <section id="categories" class="landing-page"></section> -->
-    <footer class="purple page-footer landing-page" id="footerId"></footer>
+    <footer class="purple page-footer landing-page" id="footerId">
+        <div class="container">
+            <div class="row">
+            <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Company </h5>
+            <ul>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Our Services
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Our Team
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Contact Us
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Pricing
+                    </a>
+                </li>
+                <li>
+                    <a class="grey-text text-lighten-3" href="#!">
+                        Connect with us
+                    </a>
+                </li>
+                <p>
+                    Icons here
+                </p>
+            </ul>
+        </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Business</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                Business Account
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                Point of Sales Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                CnapxPay Card Reader
+                            </a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">
+                                
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2023 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">
+                        <small>Powered by</small> <b>iservng</b>
+                </a>
+            </div>
+        </div> 
+    </footer>
 
 
     <!-- Modal Structure -->
@@ -421,13 +809,31 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
     -->
 
-    <script src="./app.js"></script>
-    <script src="./js/materialize.min.js"></script>
-    <script src="./js/instascan.min.js"></script>
-    <script src="./bundle.js" type="module"></script>
-
+    <!-- <script src="./app.js"></script> -->
     <script>
-        //  document.addEventListener('DOMContentLoaded', function() {});
+        // localStorage.clear();
     </script>
+    <script src="./register_sw.js"></script>
+    <script src="./js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sidenav = document.querySelectorAll('.sidenav');
+                M.Sidenav.init(sidenav);
+                var dropdown = document.querySelectorAll('.dropdown-trigger');
+                M.Dropdown.init(dropdown);
+
+                var collapsible = document.querySelectorAll('.collapsible');
+                M.Collapsible.init(collapsible);
+
+                var slider = document.querySelectorAll('.slider');
+                M.Slider.init(slider, {
+                    indicators: false,
+                    height: 600
+                });
+        });
+    </script>
+    <!-- <script type="module" src="./js/createIndexeddb.js"></script> -->
+    <!-- <script type="module" src="./js/bookkeeping.js"></script> -->
+    <script type="module" src="./bundle.js"></script>
 </body>
 </html>

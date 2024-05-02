@@ -1,5 +1,5 @@
 
-import { CnapxApplication } from './config/config.js';
+import { CnapxApplication } from './config_src/config.js';
 import { initializeApp } from 'firebase/app';
 const firebaseConfig = {
     apiKey: "AIzaSyCrfKDEJg8Y9Xn4B2yAWdbuMoQUvP_qk5U",
@@ -11,34 +11,11 @@ const firebaseConfig = {
   };
 initializeApp(firebaseConfig);
 
-
-
-let urlobject = new URL(window.location.href);
-let path = urlobject.pathname;
-
-if(path.indexOf('admin') > -1)
-{
-  const cnapx = new CnapxApplication();
-  cnapx.displayAppAdmin();  
-}
-else 
-{
-  const cnapx = new CnapxApplication();
-  cnapx.displayApp();
-}
+const cnapx = new CnapxApplication();
+cnapx.displayApp();
 
 
 
-if ('serviceWorker' in navigator) 
-{
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('../public/service-worker.js').then(registration => {
-        console.log('SW registered: ', registration);
-      }).catch(registrationError => {
-        console.log('SW registration failed: ', registrationError);
-      });
-    });
-}
 
 
 

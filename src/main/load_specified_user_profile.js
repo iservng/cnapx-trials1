@@ -1,8 +1,8 @@
 import { getFirestore, doc, getDoc, collection, updateDoc } from "firebase/firestore";
-import { insertIntoDOM } from "../utils/insert_into_DOM.js";
-import { toastIt } from "../utils/toast_it.js";
-import { convertDateFromMilliSecToDateString } from "../utils/date_4rm_milisec_to_humanReadable.js";
-import { smallSpinner } from "../utils/small_spinner.js";
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { toastIt } from "../utils_src/toast_it.js";
+import { convertDateFromMilliSecToDateString } from "../utils_src/date_4rm_milisec_to_humanReadable.js";
+import { smallSpinner } from "../utils_src/small_spinner.js";
 
 
 class LoadSpecifiedUserProfile

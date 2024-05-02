@@ -1,8 +1,8 @@
-import { toastIt } from "../utils/toast_it.js";
-import { insertIntoDOM } from '../utils/insert_into_DOM.js';
+import { toastIt } from "../utils_src/toast_it.js";
+import { insertIntoDOM } from '../utils_src/insert_into_DOM.js';
 
-import { APP_NAME, DEFAILT_MENU } from '../config/app_constants.js';
-import { removeSidenav } from "../utils/remove_side_nav.js";
+import { APP_NAME, DEFAILT_MENU } from '../config_src/app_constants.js';
+import { removeSidenav } from "../utils_src/remove_side_nav.js";
 /**
  * This class is responsible to taking information, then display the header part of this application using the specified information. This information in question is usually 
  * 1. The logo name of the Application
@@ -232,7 +232,7 @@ class FinanceProfileMenu
                 logoutBtns.forEach(btn => {
                     btn.addEventListener('click', e => {
                         e.preventDefault();
-                        import('../utils/logout_class.js')
+                        import('../utils_src/logout_class.js')
                         .then(m => {
                             let logout = new m.Logout();
                             logout.logUserOut();

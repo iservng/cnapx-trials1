@@ -1,7 +1,5 @@
-import { insertIntoDOM } from "../utils/insert_into_DOM.js";
-import { toastIt } from "../utils/toast_it.js";
-// import { OfflineDB } from "../indexeddb/offlinedb.js";
-
+import { insertIntoDOM } from "../utils_src/insert_into_DOM.js";
+import { toastIt } from "../utils_src/toast_it.js";
 class MainContent 
 {
 
@@ -99,17 +97,17 @@ class MainContent
 
             //Using the sniffing method check if the user-agent support offline functionality then Dynamically call the offline setup class and execute it
 
-            if(window.indexedDB)
+            if(window.indexedDB)//01
             {
-                import("../indexeddb/offlinedb.js")
+                import("../indexeddb_src/offlinedb.js")
                 .then(m => {
                     let offlinedb = new m.OfflineDB();
                     offlinedb.withDB(() => console.log("Offline DB set completed"));
                 })
                 .catch(error => {
                     console.log(error.message);
+                    toastIt('red', 'This browser is evidently old!');
                 });
-                // console.log("IndexedDB is found");
             }
             else 
             {

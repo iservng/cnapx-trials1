@@ -7,14 +7,27 @@
  * 
  */
 
-import { smallSpinner } from "../../utils/small_spinner.js";
-import { toastIt } from "../../utils/toast_it.js";
-import { lowAndRemvSpce } from "../../utils/lower_remv_spaces.js";
-import { getEmailAndPassword } from "../../test.js";
+import { smallSpinner } from "../../utils_src/small_spinner.js";
+import { toastIt } from "../../utils_src/toast_it.js";
+import { lowAndRemvSpce } from "../../utils_src/lower_remv_spaces.js";
+// import { getEmailAndPassword } from "../../test.js";
 
-import { insertIntoDOM } from "../../utils/insert_into_DOM.js";
-import { serverTimestamp, addDoc, collection, getFirestore, query, where, getDocFromServer, getDocsFromServer } from "firebase/firestore";
-import { createUserWithEmailAndPassword, getAuth, signOut } from "firebase/auth";
+import { insertIntoDOM } from "../../utils_src/insert_into_DOM.js";
+import { 
+    serverTimestamp, 
+    addDoc, 
+    collection, 
+    getFirestore, 
+    query, 
+    where, 
+    getDocFromServer, 
+    getDocsFromServer 
+} from "firebase/firestore";
+import { 
+    createUserWithEmailAndPassword, 
+    getAuth, 
+    signOut 
+} from "firebase/auth";
 // import { generateShortPassword } from "../../utils/random_pass.js";
 
 class CreateUserAccount 
